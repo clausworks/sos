@@ -1,2 +1,4 @@
 # SOS: The SOS Operating System
-CPE 454 OS Project
+Cal Poly, San Luis Obispo
+CSC 454
+OS Project
