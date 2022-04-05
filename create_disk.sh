@@ -16,8 +16,7 @@ sudo losetup -f "$1" -o 1048576
 sudo mkdosfs -F32 -f 2 $fs_part
 sudo mount $fs_part $mount_point
 sudo grub-install --root-directory=$mount_point --no-floppy --modules="normal part_msdos ext2 multiboot" $main_disk --target=i386-pc
-sudo cp grub.cfg $mount_point/boot/grub/
-sudo cp kernel.bin $mount_point/boot/
+sudo cp -r root/* $mount_point/
 sudo umount $mount_point
 sudo losetup -d $main_disk
 sudo losetup -d $fs_part
