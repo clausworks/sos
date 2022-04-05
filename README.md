@@ -2,6 +2,6 @@
 
 Cal Poly, San Luis Obispo
 
-CSC 454
+Dr. John Bellardo, CSC 454
 
 OS Project
