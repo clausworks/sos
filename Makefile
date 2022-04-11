@@ -1,7 +1,10 @@
 kernel_path := root/boot/kernel.bin
 img_file := sos.img
-assembly_source_files := $(wildcard *.asm)
-assembly_object_files := $(patsubst %.asm, %.o, $(assembly_source_files))
+asm_src_files := $(wildcard *.asm)
+asm_obj_files := $(patsubst %.asm, %.o, $(asm_src_files))
+c_hdr_files := $(wildcard *.h)
+c_src_files := $(wildcard *.c)
+c_obj_files := $(patsubst %.c, %.o, $(c_src_files))
 linker_script := linker.ld
 grub_config := root/boot/grub/grub.cfg
 kernel=root/boot/kernel.bin
@@ -14,7 +17,7 @@ build: $(kernel)
 clean:
 	rm -f $(img_file)
 	rm -f $(kernel)
-	rm -f $(assembly_object_files)
+	rm -f $(asm_obj_files)
 
 img: $(img_file)
 
@@ -22,10 +25,13 @@ $(img_file): $(kernel) $(grub_config)
 	sudo ./create_disk.sh $(img_file)
 
 run: $(img_file)
-	sudo qemu-system-x86_64 -drive format=raw,file=$(img_file)
+	sudo qemu-system-x86_64 -s -drive format=raw,file=$(img_file)
 
-$(kernel): $(linker_script) $(assembly_object_files)
-	x86_64-elf-ld -n -T $(linker_script) -o $(kernel) $(assembly_object_files)
+$(kernel): $(linker_script) $(asm_obj_files) $(c_obj_files) $(c_hdr_files)
+	x86_64-elf-ld -n -T $(linker_script) -o $(kernel) $(asm_obj_files) $(c_obj_files)
 
 %.o: %.asm
 	nasm -felf64 $< -o $@
+
+$(c_obj_files): $(c_src_files)
+	gcc -g -c $(c_src_files) -Wall -Werror
