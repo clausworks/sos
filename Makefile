@@ -34,4 +34,4 @@ $(kernel): $(linker_script) $(asm_obj_files) $(c_obj_files) $(c_hdr_files)
 	nasm -felf64 $< -o $@
 
 $(c_obj_files): $(c_src_files)
-	gcc -g -c $(c_src_files) -Wall -Werror
+	x86_64-elf-gcc -g -c $(c_src_files) -Wall -Werror
