@@ -1,7 +1,8 @@
+#include "kernel.h"
 #include "memory.h"
-#include <stdint.h>
+#include <stdint-gcc.h>
 
-void *memset_(void *dst, int c, SIZE_T n) {
+void *memset(void *dst, int c, size_t n) {
    uint8_t *data = (uint8_t *)dst;
    c = c & 0xFF; /* only keep lowest byte */
    int i;
@@ -14,34 +15,41 @@ void *memset_(void *dst, int c, SIZE_T n) {
    return dst;
 }
 
-void *memcpy_(void *dest, const void *src, SIZE_T n) {
+/* Copies n bytes from src to dest. Memory regions may overlap.
+ */
+void *memcpy(void *dest, const void *src, size_t n) {
    uint8_t *d = (uint8_t *)dest, *s = (uint8_t *)src;
    int i;
    
-   for (i = 0; i < n; ++i) {
-      *d = *s;
-      d++;
-      s++;
+   /* Change copy direction (relevant if memory regions overlap) */
+   if (src > dest) {
+      for (i = 0; i < n; ++i) {
+         d[i] = s[i];
+      }
+   }
+   else if (src < dest) {
+      for (i = n - 1; i >= 0; --i) {
+         d[i] = s[i];
+      }
    }
 
    return dest;
 }
 
-SIZE_T strlen_(const char *s) {
-   char *t = (char *)s;
-   while (*(t++) != '\0');
-   return t - s;
+size_t strlen(const char *s) {
+   int i;
+   for (i = 0; s[i] != 0; ++i);
+   return i;
 }
 
-char *strcpy_(char *dest, const char *src) {
-   char *c = dest;
-   while ((*(c++) = *(src++)) != '\0');
+char *strcpy(char *dest, const char *src) {
+   memcpy(dest, src, strlen(src) + 1);
    return dest;
 }
 
-int strcmp_(const char *s1, const char *s2) {
+int strcmp(const char *s1, const char *s2) {
    int diff = 0;
-   char *shorter = (char *)((strlen_(s1) < strlen_(s2)) ? s1 : s2);
+   char *shorter = (char *)((strlen(s1) < strlen(s2)) ? s1 : s2);
    
    for (; *shorter != 0; shorter++, s1++, s2++) {
       if ((diff = *s1 - *s2) != 0) {
@@ -53,19 +61,24 @@ int strcmp_(const char *s1, const char *s2) {
    return *s1 - *s2;
 }
 
-const char *strchr_(const char *s, int c) {
+const char *strchr(const char *s, int c) {
    int i;
 
    for (i = 0; s[i] != 0; ++i) {
       if (s[i] == c) {
-         return i;
+         return s + i;
       }
    }
 
-   return -1;
+   /* Handle matching null character */
+   if (s[i] == c) {
+      return s + i;
+   }
+
+   return NULL;
 }
 
 /* NOT IMPLEMENTED */
-char *strdup_(const char *s) {
+char *strdup(const char *s) {
    return 0;
 }

@@ -1,16 +1,16 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
-#include <stdint.h>
+#include <stdint-gcc.h>
 
-#define SIZE_T uint32_t
+#define size_t long unsigned int
 
-void *memset_(void *dst, int c, SIZE_T n);
-void *memcpy_(void *dest, const void *src, SIZE_T n);
-SIZE_T strlen_(const char *s);
-char *strcpy_(char *dest, const char *src);
-int strcmp_(const char *s1, const char *s2);
-const char *strchr_(const char *s, int c);
-char *strdup_(const char *s);
+void *memset(void *dst, int c, size_t n);
+void *memcpy(void *dest, const void *src, size_t n);
+size_t strlen(const char *s);
+char *strcpy(char *dest, const char *src);
+int strcmp(const char *s1, const char *s2);
+const char *strchr(const char *s, int c);
+char *strdup(const char *s);
 
 #endif

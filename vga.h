@@ -1,7 +1,7 @@
 #ifndef VGAH
 #define VGAH
 
-#include <stdint.h>
+#include <stdint-gcc.h>
 
 #define VGA_H 25
 #define VGA_W 80
@@ -28,9 +28,15 @@
 #define BG_GRAY 0x7000
 #define BRIGHT 0x0800
 #define BG_BRIGHT 0x8000
+#define DEFAULT_ATTR WHITE
+
+#define TAB_WIDTH 8
+#define HEX_BUFLEN 17
+#define UDEC_BUFLEN 21
 
 void vga_clear(void);
-void vga_display_char(char, uint16_t, int);
-void vga_display_str(const char *, uint16_t, int);
+void vga_display_char(char, uint16_t);
+void vga_display_str(const char *, uint16_t);
+int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...);
 
 #endif
