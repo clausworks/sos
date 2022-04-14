@@ -63,10 +63,10 @@ void vga_display_str(const char *str, uint16_t attr) {
 
 /* printk helper functions */
 
-void print_hex(unsigned long long x, int width) {
+void print_base_n(unsigned long long x, int base, int width) {
    char buffer[HEX_BUFLEN] = {0};
    char *c;
-   int i, digit, base = 16;
+   int i, digit;
    
    for (i = 0, c = &buffer[HEX_BUFLEN - 2]; x; x /= base, ++i, --c) {
       digit = x % base;
@@ -84,6 +84,14 @@ void print_hex(unsigned long long x, int width) {
    }
 
    vga_display_str(++c, DEFAULT_ATTR);
+}
+
+void print_hex(unsigned long long x, int width) {
+   print_base_n(x, 16, width);
+}
+
+void print_bin(unsigned long long x, int width) {
+   print_base_n(x, 2, width);
 }
 
 void print_udec(unsigned long long x) {
