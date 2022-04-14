@@ -128,6 +128,9 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
          continue;
       }
       switch (*(++c)) {
+      case '%':
+         vga_display_char('%', DEFAULT_ATTR);
+         break;
       case 'd':
          print_dec(va_arg(args, int));
          break;
@@ -154,6 +157,8 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
          case 'x':
             print_hex((unsigned short)va_arg(args, unsigned), 4);
             break;
+         default:
+            return -1;
          }
          break;
       case 'l':
@@ -167,6 +172,8 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
          case 'x':
             print_hex(va_arg(args, unsigned long), 16);
             break;
+         default:
+            return -1;
          }
          break;
       case 'q':
@@ -180,11 +187,15 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
          case 'x':
             print_hex(va_arg(args, unsigned long long), 16);
             break;
+         default:
+            return -1;
          }
          break;
       case 's':
          vga_display_str(va_arg(args, char *), DEFAULT_ATTR);
          break;
+      default:
+         return -1;
       }
    }
    return 0;
