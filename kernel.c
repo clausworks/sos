@@ -48,6 +48,13 @@ void printk_demo2() {
    printk("%s went to the store at %hu Main Street" 
       " to buy %d gallons of 2%% milk.", 
       "Bobby", 12, 2);
+
+/*
+   printk("BINARY:\n");
+   printk("short: %hb\n", 0xFFFF);
+   printk("regular: %hb\n", 0x55553333);
+   printk("long: %lb\n", 0x1234567890ABCDEF);
+   */
 }
 
 extern void kmain() {
@@ -61,19 +68,17 @@ extern void kmain() {
    */
 
    vga_clear();
-   printk_demo();
    /*
+   printk_demo();
    printk_demo2();
    */
 
 
    /* Demonstrate scrolling */
-   /*
    for (int i = 0; i < VGA_H; ++i) {
       printk("%d\t\t\t\t\t\t\t%c\n", i, 'A' + i);
    }
    printk("new line...\n");
-   */
 
    
    while (1) {
