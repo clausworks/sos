@@ -1,5 +1,6 @@
 #include "vga.h"
 #include "memory.h"
+#include "ps2.h"
 
 void init_msg() {
    vga_clear();
@@ -19,17 +20,10 @@ extern void kmain() {
    while (!_cont);
 */
 
-   /*
    init_msg();
-   */
 
-   for (int i = 0; i < VGA_H; ++i) {
-      printk("%d\t\t\t\t\t\t\t%c\n", i, 'A' + i);
-   }
+   ps2_init();
 
-   printk("new line...\n");
-
-   
    while (1) {
       asm("hlt");
    }
