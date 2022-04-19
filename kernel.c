@@ -23,6 +23,7 @@ extern void kmain() {
    init_msg();
 
    ps2_init();
+   kb_init();
 
    while (1) {
       asm("hlt");
