@@ -14,5 +14,5 @@ with open('tmp') as infile:
       codes.append(tuple(line.split(' ')))
 
 for c in codes:
-   print(f"mapping[0x{c[2]}].lower = '{c[0]}';")
-   print(f"mapping[0x{c[2]}].upper = '{c[1]}';")
+   print(f"scmap[0x{c[2]}].lower = '{c[0]}';")
+   print(f"scmap[0x{c[2]}].upper = '{c[1]}';")

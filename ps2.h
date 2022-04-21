@@ -36,15 +36,29 @@
 #define KBRSP_RESEND 0xFE
 #define KBRSP_ST_PASS 0xAA
 
-void ps2_init(void);
-int kb_init(void);
+#define SC_LSHIFT 0x12
+#define SC_CAPS 0x58
+#define SC_RSHIFT 0x59
+#define SC_ENTER 0x5A
+#define SC_BKSP 0x66
 
 typedef struct KeyPacket {
    char ascii;
    uint8_t shift;
    uint8_t caps;
    uint8_t pressed;
+   uint8_t printable;
    uint8_t scancode[6]; /* scan code; byte 0 is first byte */
 } KeyPacket;
+
+typedef struct ScanMapping {
+   char lower;
+   char upper;
+} ScanMapping;
+
+void ps2_init(void);
+int kb_init(void);
+int get_key(KeyPacket *);
+void init_scmap();
 
 #endif

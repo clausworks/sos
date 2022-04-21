@@ -15,15 +15,30 @@ void init_msg() {
 }
 
 extern void kmain() {
-/*
+   KeyPacket kp;
+
+   /*
    int _cont = 0;
    while (!_cont);
-*/
+   */
 
    init_msg();
 
    ps2_init();
    kb_init();
+   printk("\n\n");
+
+   while (1) {
+      if (get_key(&kp)) {
+         /* printk("%c %s\n", kp.ascii, (kp.pressed) ? "down" : "up"); */
+         if (kp.pressed && kp.ascii) {
+            printk("%c", kp.ascii);
+         }
+      }
+      else {
+         /*printk("get_key failed\n");*/
+      }
+   }
 
    while (1) {
       asm("hlt");
