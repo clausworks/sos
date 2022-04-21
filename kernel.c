@@ -1,5 +1,6 @@
 #include "vga.h"
 #include "memory.h"
+#include "ps2.h"
 
 void init_msg() {
    vga_clear();
@@ -58,29 +59,31 @@ void printk_demo2() {
 }
 
 extern void kmain() {
-/*
+   KeyPacket kp;
+
+   /*
    int _cont = 0;
    while (!_cont);
-*/
+   */
 
-   /*
    init_msg();
-   */
 
-   vga_clear();
-   /*
-   printk_demo();
-   printk_demo2();
-   */
+   ps2_init();
+   kb_init();
+   printk("\n\n");
 
-
-   /* Demonstrate scrolling */
-   for (int i = 0; i < VGA_H; ++i) {
-      printk("%d\t\t\t\t\t\t\t%c\n", i, 'A' + i);
+   while (1) {
+      if (get_key(&kp)) {
+         /* printk("%c %s\n", kp.ascii, (kp.pressed) ? "down" : "up"); */
+         if (kp.pressed && kp.ascii) {
+            printk("%c", kp.ascii);
+         }
+      }
+      else {
+         /*printk("get_key failed\n");*/
+      }
    }
-   printk("new line...\n");
 
-   
    while (1) {
       asm("hlt");
    }
