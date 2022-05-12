@@ -1,6 +1,7 @@
 #include "vga.h"
 #include "memory.h"
 #include "ps2.h"
+#include "interrupt.h"
 
 void init_msg() {
    vga_clear();
@@ -15,12 +16,13 @@ void init_msg() {
 }
 
 extern void kmain() {
-   KeyPacket kp;
-
-   /*
+   /*KeyPacket kp;*/
+/*
    int _cont = 0;
    while (!_cont);
    */
+
+   irq_init();
 
    init_msg();
 
@@ -28,17 +30,18 @@ extern void kmain() {
    kb_init();
    printk("\n\n");
 
+   /* Enable interrupts */
+   STI;
+
+   /*
    while (1) {
       if (get_key(&kp)) {
-         /* printk("%c %s\n", kp.ascii, (kp.pressed) ? "down" : "up"); */
          if (kp.pressed && kp.ascii) {
             printk("%c", kp.ascii);
          }
       }
-      else {
-         /*printk("get_key failed\n");*/
-      }
    }
+   */
 
    while (1) {
       asm("hlt");

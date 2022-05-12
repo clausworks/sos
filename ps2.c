@@ -3,21 +3,10 @@
 #include "ps2.h"
 #include "vga.h"
 #include "memory.h"
+#include "io.h"
 
 ScanMapping scmap[0xFF];
 ScanMapping scmap_ext[0xFF];
-
-static inline uint8_t inb(uint16_t port) {
-   uint8_t ret;
-   asm volatile ( "inb %1, %0"
-   : "=a"(ret)
-   : "Nd"(port) );
-   return ret;
-}
-
-static inline void outb(uint16_t port, uint8_t val) {
-   asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
-}
 
 void ps2_send_cmd(uint8_t cmd) {
    uint8_t status = inb(PS2_STATUS_PORT);

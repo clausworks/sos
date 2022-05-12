@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include "vga.h"
 #include "memory.h"
+#include "interrupt.h"
 
 uint16_t *const VGA_BASE = (uint16_t *)0xb8000;
 int vga_cursor = 0;
@@ -10,6 +11,12 @@ int vga_cursor = 0;
  * vga_cursor.
  */
 void vga_display_char(char c, uint16_t attr) {
+   int enable_int = 0;
+   if (interrupts_enabled()) {
+      CLI;
+      enable_int = 1;
+   }
+
    switch (c) {
    case '\n':
       vga_cursor = vga_cursor + (VGA_W - vga_cursor % VGA_W); /* CRLF */
@@ -26,18 +33,15 @@ void vga_display_char(char c, uint16_t attr) {
       break;
    }
    
-   /*
-   *(VGA_BASE) = '1' | RED;
-   *(VGA_BASE + VGA_W) = '2' | RED;
-   *(VGA_BASE + VGA_W * (VGA_H - 1)) = '3' | RED;
-   *(VGA_BASE + VGA_W * VGA_H - 1) = '4' | RED;
-   */
-
    /* Scroll if needed */
    if (vga_cursor >= VGA_W * VGA_H) {
       memcpy(VGA_BASE, VGA_BASE + VGA_W, sizeof(uint16_t) * VGA_W * (VGA_H - 1));
       memset(VGA_BASE + (VGA_H - 1) * VGA_W, 0, sizeof(uint16_t) * VGA_W);
       vga_cursor -= VGA_W;
+   }
+
+   if (enable_int) {
+      STI;
    }
 }
 
