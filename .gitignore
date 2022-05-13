@@ -2,6 +2,7 @@
 *.img
 *.swp
 .gdb_history
+scrap/*
 
 # Prerequisites
 *.d
