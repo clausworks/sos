@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include "vga.h"
 #include "memory.h"
 #include "ps2.h"
@@ -16,8 +17,9 @@ void init_msg() {
 }
 
 extern void kmain() {
+   int x = 1, y = 0;
    /*KeyPacket kp;*/
-/*
+   /*
    int _cont = 0;
    while (!_cont);
    */
@@ -43,7 +45,9 @@ extern void kmain() {
    }
    */
 
+   x = x/y;
+
    while (1) {
-      asm("hlt");
+      HLT;
    }
 }

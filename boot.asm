@@ -1,4 +1,5 @@
 global start
+global gdt64
 extern long_mode_start
 
 section .text
@@ -136,7 +137,11 @@ section .rodata
 gdt64:
 	dq 0 ; zero entry
 .code: equ $ - gdt64
-	dq (1<<43) | (1<<44) | (1<<47) | (1<<53) ; code segmen
+	dq (1<<43) | (1<<44) | (1<<47) | (1<<53) ; code segment
+	; START TSS DESCRIPTOR
+     dq 0
+	dq 0
+	; END TSS DESCRIPTOR
 .pointer:
 	dw $ - gdt64 - 1
 	dq gdt64

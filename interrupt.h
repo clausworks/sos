@@ -29,6 +29,12 @@ typedef struct IRQHandlerEntry {
    irq_handler_t handler;
 } IRQEntry;
 
+typedef struct TSSSelector {
+   uint16_t rpl : 2;
+   uint16_t ti : 1;
+   uint16_t index : 13;
+} __attribute__((packed)) TSSSelector;
+
 typedef struct TSSDescriptor {
    uint16_t seg_lim_15_0;
    uint16_t base_addr_15_0;
@@ -40,8 +46,33 @@ typedef struct TSSDescriptor {
    uint8_t seg_lim_19_16 : 4;
    uint8_t avl : 1;
    uint8_t : 2;
-   uint8_t g;
+   uint8_t g : 1;
+   uint8_t base_addr_31_24;
+   uint32_t base_addr_63_32;
+   uint32_t reserved;
 } __attribute__((packed)) TSSDescriptor;
+
+typedef struct TSS {
+   uint32_t reserved_00;
+   uint64_t rsp0;
+   uint64_t rsp1;
+   uint64_t rsp2;
+   uint64_t reserved_1C;
+   uint64_t ist1;
+   uint64_t ist2;
+   uint64_t ist3;
+   uint64_t ist4;
+   uint64_t ist5;
+   uint64_t ist6;
+   uint64_t ist7;
+   uint64_t reserved_5C;
+   uint16_t reserved_64;
+   uint16_t iomap_base;
+} __attribute__((packed)) TSS;
+
+#define TSS_DESC_TYPE 9
+#define ALT_STACK_WORDS 1024
+#define TSS_GDT_INDEX 2 
 
 #define IDT_NUM_ENTRIES 256
 #define IDT_TYPE_INTGATE 0xE
@@ -79,7 +110,6 @@ typedef struct TSSDescriptor {
 #define PIC_PS2_LINE 1
 #define INT_PS2 (INT_PIC1_BASE + PIC_PS2_LINE)
 
-
 #define CLI asm("cli")
 #define STI asm("sti")
 
@@ -99,5 +129,8 @@ void irq_df(int, int, void *);
 void irq_gp(int, int, void *);
 void irq_pf(int, int, void *);
 void irq_kb(int, int, void *);
+
+/* GDT */
+extern uint64_t gdt64;
 
 #endif

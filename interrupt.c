@@ -10,6 +10,11 @@
 IDTEntry global_idt[IDT_NUM_ENTRIES];
 IRQEntry c_idt[IDT_NUM_ENTRIES];
 
+TSS tss;
+uint64_t alt_stack_df[ALT_STACK_WORDS] = {0};
+uint64_t alt_stack_gp[ALT_STACK_WORDS] = {0};
+uint64_t alt_stack_pf[ALT_STACK_WORDS] = {0};
+
 /* osdev.org PIC remap: https://wiki.osdev.org/PIC */
 void remap_pic(int offset1, int offset2) {
    unsigned char a1, a2;
@@ -39,6 +44,37 @@ void remap_pic(int offset1, int offset2) {
    outb(PIC2_DATA, a2);
 }
 
+void tss_init() {
+   uint64_t tss_addr = (uint64_t)&tss;
+   uint64_t *gdt = (uint64_t *)&gdt64;
+   TSSDescriptor *tss_desc = (TSSDescriptor *)(gdt + TSS_GDT_INDEX);
+
+   /* TSS Selector */
+   TSSSelector tss_sel = {0};
+   tss_sel.index = TSS_GDT_INDEX;
+
+   /* TSS Descriptor */
+   memset(tss_desc, 0, sizeof(TSSDescriptor));
+   tss_desc->type = TSS_DESC_TYPE;
+   tss_desc->present = 1;
+   tss_desc->seg_lim_15_0 = (sizeof(TSS) - 1) & 0xFFFF;
+   tss_desc->seg_lim_19_16 = ((sizeof(TSS) - 1) >> 16) & 0xF;
+   tss_desc->base_addr_15_0 = tss_addr & 0xFFFF;
+   tss_desc->base_addr_23_16 = (tss_addr >> 16) & 0xFF;
+   tss_desc->base_addr_31_24 = (tss_addr >> 24) & 0xFF;
+   tss_desc->base_addr_63_32 = (tss_addr >> 32) & 0xFFFFFFFF;
+
+   /* TSS */
+   memset(&tss, 0, sizeof(TSS));
+   tss.ist1 = (uint64_t)(alt_stack_df + ALT_STACK_WORDS - 1);
+   tss.ist2 = (uint64_t)(alt_stack_gp + ALT_STACK_WORDS - 1);
+   tss.ist3 = (uint64_t)(alt_stack_pf + ALT_STACK_WORDS - 1);
+   tss.iomap_base = sizeof(TSS) - 2;
+
+   /* Enable */
+   asm("ltr %0" :: "m"(tss_sel));
+}
+
 void irq_init() {
    int i;
    IDTR idtr = {0};
@@ -62,6 +98,11 @@ void irq_init() {
       global_idt[i].offset_63_32 = 0xFFFFFFFF & (addr >> 32);
    }
 
+   /* Set IST entries for special stacks */
+   global_idt[EXC_DF].ist = 1;
+   global_idt[EXC_GP].ist = 2;
+   global_idt[EXC_PF].ist = 3;
+
    /* Disable all PIC interrupts except PS/2 controller */
    for (i = 0; i < 8; ++i) {
       pic_setmask(i);
@@ -79,6 +120,9 @@ void irq_init() {
    irq_set_handler(EXC_GP, irq_gp, NULL);
    irq_set_handler(EXC_PF, irq_pf, NULL);
    irq_set_handler(INT_PS2, irq_kb, NULL);
+
+   /* Set up multiple stacks */
+   tss_init();
 }
 
 void irq_set_handler(int irq, irq_handler_t handler, void *arg) {
@@ -90,17 +134,6 @@ void irq_set_handler(int irq, irq_handler_t handler, void *arg) {
    }
    c_idt[irq].handler = handler;
    c_idt[irq].arg = arg;
-}
-
-void handle_asm_irq(int irq, int err) {
-   if (irq < 0 || irq >= IDT_NUM_ENTRIES) {
-      printk("handle_asm_irq: invalid IRQ number (#%d)\n", irq);
-   }
-   if (c_idt[irq].handler == NULL) {
-      printk("handle_asm_irq: null handler (#%d)\n", irq);
-   }
-
-   c_idt[irq].handler(irq, err, c_idt[irq].arg);
 }
 
 int interrupts_enabled() {
@@ -150,6 +183,18 @@ void pic_clrmask(uint8_t irq) {
 }
 
 /* C interrupt handlers */
+
+void handle_asm_irq(int irq, int err) {
+   if (irq < 0 || irq >= IDT_NUM_ENTRIES) {
+      printk("handle_asm_irq: invalid IRQ number (#%d)\n", irq);
+   }
+   if (c_idt[irq].handler == NULL) {
+      printk("Unhandled interrupt: #%d. Halting CPU.\n", irq);
+      HLT;
+   }
+
+   c_idt[irq].handler(irq, err, c_idt[irq].arg);
+}
 
 void irq_de(int irq, int err, void *arg) {
    printk("Divide by zero exception\n");
