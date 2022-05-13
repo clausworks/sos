@@ -1,8 +1,8 @@
 #include "kernel.h"
-#include "vga.h"
 #include "memory.h"
 #include "ps2.h"
 #include "interrupt.h"
+#include "io.h"
 
 void init_msg() {
    vga_clear();

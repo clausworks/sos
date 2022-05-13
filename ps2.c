@@ -1,7 +1,6 @@
 #include "kernel.h"
 #include <stdint-gcc.h>
 #include "ps2.h"
-#include "vga.h"
 #include "memory.h"
 #include "io.h"
 

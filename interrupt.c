@@ -1,6 +1,5 @@
 #include "kernel.h"
 #include "memory.h"
-#include "vga.h"
 #include "interrupt.h"
 #include "isr.h"
 #include "io.h"
