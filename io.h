@@ -34,13 +34,43 @@
 #define HEX_BUFLEN 17
 #define UDEC_BUFLEN 21
 
+#define PIC_SER_LINE 4
+#define INT_SER (INT_PIC1_BASE + PIC_SER_LINE)
+#define SER_PORT 0x3F8
+#define SER_DR SER_PORT
+#define SER_IER (SER_PORT + 1)
+#define SER_IIR (SER_PORT + 2)
+#define SER_LCR (SER_PORT + 3)
+#define SER_LSR (SER_PORT + 5)
+#define SER_DLL SER_PORT
+#define SER_DLM (SER_PORT + 1)
+
+#define SER_IIR_INT_Msk (7 << 1)
+#define SER_IIR_LINE_Val (3 << 1)
+#define SER_IIR_TX_Val (1 << 1)
+#define SER_LSR_IDLE (1 << 6)
+
+#define SER_BUFF_SIZE 256
+
+typedef struct SerialState {
+   char buff[SER_BUFF_SIZE];
+   int start;
+   int end;
+   int idle;
+} SerialState;
+
 void vga_clear(void);
 void vga_display_char(char, uint16_t);
 void vga_display_str(const char *, uint16_t);
 int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...);
 
+void ser_init();
+void ser_write_char(char);
+void ser_write_str(char *);
+
 uint8_t inb(uint16_t);
 void outb(uint16_t, uint8_t);
 void io_wait(void);
+void irq_ser(int, int, void *);
 
 #endif

@@ -17,7 +17,6 @@ void init_msg() {
 }
 
 extern void kmain() {
-   int x = 1, y = 0;
    /*KeyPacket kp;*/
    /*
    int _cont = 0;
@@ -27,10 +26,11 @@ extern void kmain() {
    irq_init();
 
    init_msg();
+   printk("\n\n");
 
    ps2_init();
    kb_init();
-   printk("\n\n");
+   ser_init();
 
    /* Enable interrupts */
    STI;
@@ -44,8 +44,6 @@ extern void kmain() {
       }
    }
    */
-
-   x = x/y;
 
    while (1) {
       HLT;

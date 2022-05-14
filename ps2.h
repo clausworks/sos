@@ -1,6 +1,8 @@
 #ifndef PS2H
 #define PS2H
 
+#include "interrupt.h"
+
 #define PS2_CMD_PORT 0x64
 #define PS2_STATUS_PORT PS2_CMD_PORT
 #define PS2_DATA_PORT 0x60
@@ -41,6 +43,9 @@
 #define SC_RSHIFT 0x59
 #define SC_ENTER 0x5A
 #define SC_BKSP 0x66
+
+#define PIC_PS2_LINE 1
+#define INT_PS2 (INT_PIC1_BASE + PIC_PS2_LINE)
 
 typedef struct KeyPacket {
    char ascii;

@@ -102,11 +102,10 @@ void irq_init() {
    global_idt[EXC_GP].ist = 2;
    global_idt[EXC_PF].ist = 3;
 
-   /* Disable all PIC interrupts except PS/2 controller */
-   for (i = 0; i < 8; ++i) {
+   /* Disable all PIC interrupts */
+   for (i = 0; i < 16; ++i) {
       pic_setmask(i);
    }
-   pic_clrmask(PIC_PS2_LINE);
 
    /* Load IDT */
    idtr.base = (uint64_t)global_idt;
@@ -118,7 +117,6 @@ void irq_init() {
    irq_set_handler(EXC_DF, irq_df, NULL);
    irq_set_handler(EXC_GP, irq_gp, NULL);
    irq_set_handler(EXC_PF, irq_pf, NULL);
-   irq_set_handler(INT_PS2, irq_kb, NULL);
 
    /* Set up multiple stacks */
    tss_init();
@@ -143,7 +141,7 @@ int interrupts_enabled() {
     return flags & (1 << 9);
 }
 
-/* PIC functions */
+/* PIC functions (from OSDev Wiki) */
 
 void pic_eoi(uint8_t irq) {
 	if(irq >= 8) {
@@ -211,16 +209,3 @@ void irq_pf(int irq, int err, void *arg) {
    printk("Page fault (error 0x%x)\n", err);
 }
 
-void irq_kb(int irq, int err, void *arg) {
-   KeyPacket kp;
-   /*printk("Keyboard interrupt\n");*/
-   if (get_key(&kp)) {
-      if (kp.pressed && kp.ascii) {
-         printk("%c", kp.ascii);
-      }
-   }
-   else {
-      printk("get_key failed\n");
-   }
-   pic_eoi(PIC_PS2_LINE);
-}

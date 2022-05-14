@@ -107,9 +107,6 @@ typedef struct TSS {
 #define INT_PIC1_BASE 0x20
 #define INT_PIC2_BASE 0x28
 
-#define PIC_PS2_LINE 1
-#define INT_PS2 (INT_PIC1_BASE + PIC_PS2_LINE)
-
 #define CLI asm("cli")
 #define STI asm("sti")
 

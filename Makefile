@@ -25,7 +25,7 @@ $(img_file): $(kernel) $(grub_config)
 	sudo ./create_disk.sh $(img_file)
 
 run: $(img_file)
-	sudo qemu-system-x86_64 -s -drive format=raw,file=$(img_file)
+	sudo qemu-system-x86_64 -s -drive format=raw,file=$(img_file) -serial stdio
 
 $(kernel): $(linker_script) $(asm_obj_files) $(c_obj_files) $(c_hdr_files)
 	x86_64-elf-ld -n -T $(linker_script) -o $(kernel) $(asm_obj_files) $(c_obj_files)

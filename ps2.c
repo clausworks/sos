@@ -113,6 +113,12 @@ void ps2_init() {
 
    /* Enable port 1 */
    ps2_send_cmd(PS2CMD_ENABLEP1);
+
+   /* Set interrupt handler */
+   /*
+   pic_clrmask(PIC_PS2_LINE);
+   irq_set_handler(INT_PS2, irq_kb, NULL);
+   */
 }
 
 /* Returns 0 on success, -1 on failure. 
@@ -206,6 +212,20 @@ int get_key(KeyPacket *kp) {
       }
    }
    return 1;
+}
+
+void irq_kb(int irq, int err, void *arg) {
+   KeyPacket kp;
+   /*printk("Keyboard interrupt\n");*/
+   if (get_key(&kp)) {
+      if (kp.pressed && kp.ascii) {
+         printk("%c", kp.ascii);
+      }
+   }
+   else {
+      printk("get_key failed\n");
+   }
+   pic_eoi(PIC_PS2_LINE);
 }
 
 void init_scmap() {

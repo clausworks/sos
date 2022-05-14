@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include <stdint-gcc.h>
 #include <stdarg.h>
 #include "io.h"
@@ -6,7 +7,7 @@
 
 uint16_t *const VGA_BASE = (uint16_t *)0xb8000;
 int vga_cursor = 0;
-
+SerialState ser_state = {0};
 
 /* Inline assembly functions from
  * https://wiki.osdev.org/Inline_Assembly/Examples
@@ -24,9 +25,13 @@ void outb(uint16_t port, uint8_t val) {
    asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
 }
 
+/* For PIC */
 void io_wait(void) {
     outb(0x80, 0);
 }
+
+/*****************************************************************************/
+/* VGA INTERFACE */
 
 /* Write a character with the specified attributes at the location given by
  * vga_cursor.
@@ -70,10 +75,22 @@ void vga_display_char(char c, uint16_t attr) {
  */
 void vga_clear() {
    int i;
+   int enable_int = 0;
+
+   if (interrupts_enabled()) {
+      CLI;
+      enable_int = 1;
+   }
+
    for (i = 0; i < VGA_H * VGA_W; ++i) {
+      ser_write_char(' ');
       vga_display_char(' ', DEFAULT_ATTR);
    }
    vga_cursor = 0;
+
+   if (enable_int) {
+      STI;
+   }
 }
 
 /* Write a null-terminated string, beginning at the specified cursor location.
@@ -81,10 +98,103 @@ void vga_clear() {
 void vga_display_str(const char *str, uint16_t attr) {
    int i;
    for (i = 0; str[i] != 0; ++i) {
+      ser_write_char(str[i]);
       vga_display_char(str[i], attr);
    }
 }
 
+/*****************************************************************************/
+/* SERIAL INTERFACE */
+
+void ser_init() {
+   uint8_t byte;
+
+   /* Set baud rate: 115200 */
+   byte = inb(SER_LCR);
+   byte |= (1 << 7);
+   outb(SER_LCR, byte);
+   outb(SER_DLL, 1);
+   outb(SER_DLM, 0);
+   byte = inb(SER_LCR);
+   byte &= ~(1 << 7);
+   outb(SER_LCR, byte);
+
+   /* Config: 8N1 */
+   byte = inb(SER_LCR);
+   byte &= ~(0xF);
+   byte |= 3;
+   outb(SER_LCR, byte);
+
+   /* Interrupts: TX and LINE */
+   byte = 0x06;
+   outb(SER_IER, byte);
+   
+   /* System interrupt config */
+   irq_set_handler(INT_SER, irq_ser, NULL);
+   pic_clrmask(PIC_SER_LINE);
+}
+
+void ser_begin_tx() {
+   /* ISR sets idle, but synchronous call doesn't */
+   if (!ser_state.idle) {
+      ser_state.idle = (inb(SER_LSR) & SER_LSR_IDLE) ? 1 : 0;
+   }
+
+   if (ser_state.idle) {
+      /* Buffer isn't empty */
+      if (ser_state.start != ser_state.end) {
+         outb(SER_DR, ser_state.buff[ser_state.start]);
+         ser_state.start = (ser_state.start + 1) % SER_BUFF_SIZE;
+         ser_state.idle = 0;
+      }
+   }
+}
+
+void irq_ser(int irq, int err, void *arg) {
+   uint8_t byte;
+
+   /* Interrupt type */
+   byte = inb(SER_IIR) & SER_IIR_INT_Msk;
+   if (byte == SER_IIR_LINE_Val) {
+      inb(SER_LSR); /* clear interrupt */
+   }
+   else if (byte == SER_IIR_TX_Val) {
+      ser_state.idle = 1;
+      ser_begin_tx();
+   }
+
+   pic_eoi(PIC_SER_LINE);
+
+}
+
+void ser_write_char(char c) {
+   int enable_int = 0;
+
+   if (interrupts_enabled()) {
+      CLI;
+      enable_int = 1;
+   }
+
+   /* Check if buffer has room */
+   if (ser_state.start != (ser_state.end + 1) % SER_BUFF_SIZE) {
+      ser_state.buff[ser_state.end] = c;
+      ser_state.end = (ser_state.end + 1) % SER_BUFF_SIZE;
+      ser_begin_tx();
+   }
+
+   if (enable_int) {
+      STI;
+   }
+}
+
+void ser_write_str(char *str) {
+   while (*str != 0) {
+      ser_write_char(*str++);
+   }
+}
+
+/*****************************************************************************/
+/* PRINTK FUNCTIONS */
 
 /* printk helper functions */
 
@@ -108,6 +218,7 @@ void print_base_n(unsigned long long x, int base, int width) {
       *c = '0';
    }
 
+   ser_write_str(++c);
    vga_display_str(++c, DEFAULT_ATTR);
 }
 
@@ -125,6 +236,7 @@ void print_udec(unsigned long long x) {
    int i, digit, base = 10;
 
    if (x == 0) {
+      ser_write_char('0');
       vga_display_char('0', DEFAULT_ATTR);
       return;
    }
@@ -134,7 +246,8 @@ void print_udec(unsigned long long x) {
       digit = x % base;
       *c = '0' + digit;
    }
-
+   
+   ser_write_str(++c);
    vga_display_str(++c, DEFAULT_ATTR);
 }
 
@@ -143,6 +256,7 @@ void print_dec(long long x) {
       print_udec(x);
    }
    else {
+      ser_write_char('-');
       vga_display_char('-', DEFAULT_ATTR);
       print_udec(-x);
    }
@@ -157,11 +271,13 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
    for (c = fmt; *c; ++c) {
       /* regular characters */
       if (*c != '%') {
+         ser_write_char(*c);
          vga_display_char(*c, DEFAULT_ATTR);
          continue;
       }
       switch (*(++c)) {
       case '%':
+         ser_write_char('%');
          vga_display_char('%', DEFAULT_ATTR);
          break;
       case 'd':
@@ -174,6 +290,7 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
          print_hex(va_arg(args, unsigned), 8);
          break;
       case 'c':
+         ser_write_char(va_arg(args, int));
          vga_display_char(va_arg(args, int), DEFAULT_ATTR);
          break;
       case 'p':
@@ -225,6 +342,7 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
          }
          break;
       case 's':
+         ser_write_str(va_arg(args, char *));
          vga_display_str(va_arg(args, char *), DEFAULT_ATTR);
          break;
       default:
