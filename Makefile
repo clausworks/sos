@@ -17,7 +17,7 @@ build: $(kernel)
 clean:
 	rm -f $(img_file)
 	rm -f $(kernel)
-	rm -f $(asm_obj_files)
+	rm -f $(asm_obj_files) $(c_obj_files)
 
 img: $(img_file)
 
