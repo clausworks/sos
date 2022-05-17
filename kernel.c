@@ -3,6 +3,7 @@
 #include "ps2.h"
 #include "interrupt.h"
 #include "io.h"
+#include "memalloc.h"
 
 void init_msg() {
    vga_clear();
@@ -18,8 +19,7 @@ void init_msg() {
 
 extern void kmain() {
    /*KeyPacket kp;*/
-   /*
-   int _cont = 0;
+   /* int _cont = 0;
    while (!_cont);
    */
 
@@ -35,6 +35,7 @@ extern void kmain() {
    /* Enable interrupts */
    STI;
 
+   print_tags();
    /*
    while (1) {
       if (get_key(&kp)) {

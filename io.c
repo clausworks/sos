@@ -98,7 +98,6 @@ void vga_clear() {
 void vga_display_str(const char *str, uint16_t attr) {
    int i;
    for (i = 0; str[i] != 0; ++i) {
-      ser_write_char(str[i]);
       vga_display_char(str[i], attr);
    }
 }
@@ -188,8 +187,9 @@ void ser_write_char(char c) {
 }
 
 void ser_write_str(char *str) {
-   while (*str != 0) {
-      ser_write_char(*str++);
+   int i;
+   for (i = 0; str[i] != 0; ++i) {
+      ser_write_char(str[i]);
    }
 }
 
@@ -218,8 +218,9 @@ void print_base_n(unsigned long long x, int base, int width) {
       *c = '0';
    }
 
-   ser_write_str(++c);
-   vga_display_str(++c, DEFAULT_ATTR);
+   ++c;
+   ser_write_str(c);
+   vga_display_str(c, DEFAULT_ATTR);
 }
 
 void print_hex(unsigned long long x, int width) {
@@ -247,8 +248,9 @@ void print_udec(unsigned long long x) {
       *c = '0' + digit;
    }
    
-   ser_write_str(++c);
-   vga_display_str(++c, DEFAULT_ATTR);
+   ++c;
+   ser_write_str(c);
+   vga_display_str(c, DEFAULT_ATTR);
 }
 
 void print_dec(long long x) {
