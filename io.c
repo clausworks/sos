@@ -164,7 +164,6 @@ void irq_ser(int irq, int err, void *arg) {
    }
 
    pic_eoi(PIC_SER_LINE);
-
 }
 
 void ser_write_char(char c) {
@@ -262,6 +261,11 @@ void print_dec(long long x) {
    }
 }
 
+void print_char(char c) {
+   ser_write_char(c);
+   vga_display_char(c, DEFAULT_ATTR);
+}
+
 int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
    va_list args;
    const char *c;
@@ -290,8 +294,7 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
          print_hex(va_arg(args, unsigned), 8);
          break;
       case 'c':
-         ser_write_char(va_arg(args, int));
-         vga_display_char(va_arg(args, int), DEFAULT_ATTR);
+         print_char(va_arg(args, int));
          break;
       case 'p':
          print_hex(va_arg(args, uintptr_t), 16);

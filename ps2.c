@@ -115,10 +115,8 @@ void ps2_init() {
    ps2_send_cmd(PS2CMD_ENABLEP1);
 
    /* Set interrupt handler */
-   /*
    pic_clrmask(PIC_PS2_LINE);
    irq_set_handler(INT_PS2, irq_kb, NULL);
-   */
 }
 
 /* Returns 0 on success, -1 on failure. 
