@@ -1,10 +1,12 @@
 global start
 global gdt64
+global multiboot_pointer
 extern long_mode_start
 
 section .text
 bits 32
 start:
+   mov [multiboot_pointer], ebx
 	mov esp, stack_top
 
 	call check_multiboot
@@ -134,6 +136,8 @@ enable_paging:
 	ret
 
 section .rodata
+multiboot_pointer:
+   dq 0
 gdt64:
 	dq 0 ; zero entry
 .code: equ $ - gdt64

@@ -3,6 +3,7 @@
 #include "ps2.h"
 #include "interrupt.h"
 #include "io.h"
+#include "memalloc.h"
 
 void init_msg() {
    vga_clear();
@@ -22,7 +23,7 @@ extern void kmain() {
    int _cont = 0;
    while (!_cont);
    */
-
+   
    irq_init();
 
    init_msg();
@@ -31,9 +32,16 @@ extern void kmain() {
    ps2_init();
    kb_init();
    ser_init();
+   mmu_pf_alloc_init();
 
    /* Enable interrupts */
    STI;
+
+
+   /*
+   _stress_test_pf_allocator();
+   */
+   _test_pf_allocator();
 
    /*
    while (1) {

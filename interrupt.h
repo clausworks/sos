@@ -110,10 +110,23 @@ typedef struct TSS {
 #define CLI asm("cli")
 #define STI asm("sti")
 
+/*
+#define CLI_COND(_FLAG_NAME) \
+   int _FLAG_NAME = 0;\
+   if (interrupts_enabled()) {\
+      CLI;\
+      _FLAG_NAME = 1;\
+   }
+
+#define STI_COND(_FLAG_NAME) \
+   if (_FLAG_NAME) {\
+      STI;\
+   }
+*/
+
 void irq_init(void);
 void pic_setmask(uint8_t irq);
 void pic_clrmask(uint8_t irq);
-/*int pic_getmask(int irq_line);*/
 void pic_eoi(uint8_t irq);
 void handle_asm_irq(int, int);
 int interrupts_enabled(void);
