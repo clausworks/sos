@@ -19,10 +19,11 @@ void init_msg() {
 
 extern void kmain() {
    /*KeyPacket kp;*/
-   /* int _cont = 0;
+   /*
+   int _cont = 0;
    while (!_cont);
    */
-
+   
    irq_init();
 
    init_msg();
@@ -31,11 +32,17 @@ extern void kmain() {
    ps2_init();
    kb_init();
    ser_init();
+   mmu_pf_alloc_init();
 
    /* Enable interrupts */
    STI;
 
-   print_tags();
+
+   /*
+   _stress_test_pf_allocator();
+   */
+   _test_pf_allocator();
+
    /*
    while (1) {
       if (get_key(&kp)) {

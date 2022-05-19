@@ -3,28 +3,30 @@
 
 extern uint8_t *multiboot_pointer;
 
-typedef struct MBTagHeader {
+typedef struct MBGenericTag {
    uint32_t type;
    uint32_t size;
-} __attribute__((packed)) MBTagHeader;
+} __attribute__((packed)) MBGenericTag;
 
 typedef struct MMapTag {
-   uint32_t entry_size;
-   uint32_t entry_version;
+   MBGenericTag generic;
+   uint32_t info_size;
+   uint32_t info_version;
 } __attribute__((packed)) MMapTag;
 
-typedef struct MMapEntry {
+typedef struct MMapInfo {
    uint64_t start;
    uint64_t length;
    uint32_t type;
    uint32_t reserved;
-} __attribute__((packed)) MMapEntry;
+} __attribute__((packed)) MMapInfo;
 
 typedef struct ELFSymbolsTag {
+   MBGenericTag generic;
    uint32_t num_hdrs;
    uint32_t hdr_size;
    uint32_t str_tab_index;
-} __attribute__((packed)) ELFsymbolsTag;
+} __attribute__((packed)) ELFSymbolsTag;
 
 typedef struct ELFHeader {
    uint32_t name;
@@ -39,9 +41,23 @@ typedef struct ELFHeader {
    uint64_t iff;
 } __attribute__((packed)) ELFHeader;
 
-#define TAG_MMAP_TYPE 6
-#define MMAP_INFO_TYPE 1
+typedef struct FreePageNode {
+   struct FreePageNode *next;
+   struct FreePageNode *prev;
+} FreePageNode;
 
-void print_tags(void);
+#define MBTAG_MMAP_TYPE 6
+#define MB_MMAP_INFO_TYPE 1
+#define MBTAG_ELF_TYPE 9
+
+#define FRAME_START_ADDR 0x100000 /* 1M */
+#define FRAME_SIZE 0x1000 /* 4K */
+#define FRAME_START (FRAME_START_ADDR / FRAME_SIZE)
+
+void mmu_pf_alloc_init(void);
+void *mmu_pf_alloc(void);
+void mmu_pf_free(void *);
+void _stress_test_pf_allocator(void);
+void _test_pf_allocator(void);
 
 #endif
