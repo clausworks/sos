@@ -37,21 +37,12 @@ extern void kmain() {
    /* Enable interrupts */
    STI;
 
-
    /*
+   asm("int $0x21"::);
+   */
+   
    _stress_test_pf_allocator();
-   */
-   _test_pf_allocator();
-
-   /*
-   while (1) {
-      if (get_key(&kp)) {
-         if (kp.pressed && kp.ascii) {
-            printk("%c", kp.ascii);
-         }
-      }
-   }
-   */
+   /* _test_pf_allocator(); */
 
    while (1) {
       HLT;

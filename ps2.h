@@ -63,7 +63,7 @@ typedef struct ScanMapping {
 
 void ps2_init(void);
 int kb_init(void);
-int get_key(KeyPacket *);
+int get_key(KeyPacket *, int);
 void init_scmap();
 
 #endif

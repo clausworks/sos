@@ -100,32 +100,19 @@ void mmu_pf_alloc_init() {
    } while (tag_hdr->type != 0 || tag_hdr->size != 8); /* T=0, S=8: end tag */
 
    /* Initialize free frames */
-   /*
-   printk("ALLOCATING FRAMES\n");
-   printk("n                next             prev\n");
-   */
    free_pages_list = (FreePageNode *)((uint64_t)first_unused_frame * FRAME_SIZE);
    n = free_pages_list;
-   /*for (i = first_unused_frame; i < total_frames - 1; ++i) {*/
-   for (i = first_unused_frame; i < first_unused_frame + 5 - 1; ++i) {
+   /*for (i = first_unused_frame; i < first_unused_frame + 5 - 1; ++i) {*/
+   for (i = first_unused_frame; i < total_frames - 1; ++i) {
       n->next = (FreePageNode *)((uint8_t *)n + FRAME_SIZE);
       n->prev = (FreePageNode *)((uint8_t *)n - FRAME_SIZE);
-      /*
-      printk("%p %p %p\n", n, n->next, n->prev);
-      */
       n = n->next;
    }
    /* Make first and last point to each other */
    n->prev = (FreePageNode *)((uint8_t *)n - FRAME_SIZE);
    n->next = free_pages_list;
    free_pages_list->prev = n;
-   /*
-   printk("%p %p %p\n", n, n->next, n->prev);
-   */
    n = free_pages_list;
-   /*
-   printk("%p %p %p\n", n, n->next, n->prev);
-   */
 }
 
 void *mmu_pf_alloc() {
@@ -186,6 +173,9 @@ void mmu_pf_free(void *pf) {
       STI;
    }
 }
+
+/*****************************************************************************/
+/* TEST CASES */
 
 void _fill_pf(void *pf) {
    int i;

@@ -115,8 +115,10 @@ void ps2_init() {
    ps2_send_cmd(PS2CMD_ENABLEP1);
 
    /* Set interrupt handler */
+   /*
    pic_clrmask(PIC_PS2_LINE);
    irq_set_handler(INT_PS2, irq_kb, NULL);
+   */
 }
 
 /* Returns 0 on success, -1 on failure. 
@@ -158,7 +160,7 @@ int kb_init() {
 /* Parses a scancode and populates kp. Blocks until an entire scancode is read.
  * Returns 1 on success, 0 on failure. 
  */
-int get_key(KeyPacket *kp) {
+int get_key(KeyPacket *kp, int block) {
    static uint8_t caps = 0, shift = 0;
    uint8_t extended = 0;
    uint8_t breakcode = 0;
@@ -169,7 +171,12 @@ int get_key(KeyPacket *kp) {
    memset(kp, 0, sizeof(KeyPacket));
 
    while (!complete) {
-      sc = ps2_read_data();
+      if (block) {
+         sc = ps2_read_data();
+      }
+      else {
+         sc = inb(PS2_DATA_PORT);
+      }
       kp->scancode[i++] = sc;
       if (sc == 0xF0) {
          breakcode = 1;
@@ -214,15 +221,25 @@ int get_key(KeyPacket *kp) {
 
 void irq_kb(int irq, int err, void *arg) {
    KeyPacket kp;
-   /*printk("Keyboard interrupt\n");*/
-   if (get_key(&kp)) {
-      if (kp.pressed && kp.ascii) {
+   printk("[");
+   if (get_key(&kp, 1)) {
+      if (kp.ascii) {
          printk("%c", kp.ascii);
+      }
+      else {
+         printk(".");
+      }
+      if (kp.pressed) {
+         printk(" down");
+      }
+      else {
+         printk(" up");
       }
    }
    else {
-      printk("get_key failed\n");
+      printk("get_key failed");
    }
+   printk("]\n");
    pic_eoi(PIC_PS2_LINE);
 }
 

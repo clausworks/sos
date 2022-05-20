@@ -13,9 +13,7 @@ SerialState ser_state = {0};
  * https://wiki.osdev.org/Inline_Assembly/Examples
  */
 
-uint8_t inb(uint16_t port) {
-   uint8_t ret;
-   asm volatile ( "inb %1, %0"
+uint8_t inb(uint16_t port) { uint8_t ret; asm volatile ( "inb %1, %0"
    : "=a"(ret)
    : "Nd"(port) );
    return ret;
@@ -201,6 +199,11 @@ void print_str(char *str) {
    vga_display_str(str, DEFAULT_ATTR);
 }
 
+void print_char(char c) {
+   ser_write_char(c);
+   vga_display_char(c, DEFAULT_ATTR);
+}
+
 void print_base_n(unsigned long long x, int base, int width) {
    char buffer[HEX_BUFLEN] = {0};
    char *c;
@@ -238,8 +241,7 @@ void print_udec(unsigned long long x) {
    int i, digit, base = 10;
 
    if (x == 0) {
-      ser_write_char('0');
-      vga_display_char('0', DEFAULT_ATTR);
+      print_char('0');
       return;
    }
 
@@ -257,15 +259,9 @@ void print_dec(long long x) {
       print_udec(x);
    }
    else {
-      ser_write_char('-');
-      vga_display_char('-', DEFAULT_ATTR);
+      print_char('-');
       print_udec(-x);
    }
-}
-
-void print_char(char c) {
-   ser_write_char(c);
-   vga_display_char(c, DEFAULT_ATTR);
 }
 
 int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
@@ -277,14 +273,12 @@ int __attribute__((format (printf, 1, 2))) printk(const char *fmt, ...) {
    for (c = fmt; *c; ++c) {
       /* regular characters */
       if (*c != '%') {
-         ser_write_char(*c);
-         vga_display_char(*c, DEFAULT_ATTR);
+         print_char(*c);
          continue;
       }
       switch (*(++c)) {
       case '%':
-         ser_write_char('%');
-         vga_display_char('%', DEFAULT_ATTR);
+         print_char('%');
          break;
       case 'd':
          print_dec(va_arg(args, int));
