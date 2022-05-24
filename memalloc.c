@@ -6,6 +6,28 @@
 
 FreePageNode *free_pages_list = NULL;
 
+PTE *page_table;
+
+struct {
+   struct {
+      PTE *pdp;
+      PTE *pd;
+   } direct;
+
+   struct {
+   } kstacks;
+
+   struct {
+      PTE *pdp;
+      PTE *pd;
+      PTE *pt;
+   } kheap;
+} pages;
+
+
+/*****************************************************************************/
+/* PAGE FRAME ALLOCATOR */
+
 /* Set start/length of memory segment to use for page frames.
  * Note that this only returns a single contiguous block. It is assumed that the
  * first block beginning with FRAME_START_ADDR (1M by default) is large enough
@@ -20,6 +42,11 @@ static void parse_mmap(uint8_t *ptr, void **start, int *num_frames) {
    for (; offset < tag->generic.size; offset += tag->info_size) {
       info = (MMapInfo *)(ptr + offset);
       
+      /*
+      printk("[%d] start: %lx\tlength: %lx  %ld\n", info->type, info->start, 
+         info->start + info->length, info->length);
+      */
+
       /* Use first contiguous block above 1M */
       if (info->type == 1 && info->start >= FRAME_START_ADDR) {
          tmp_ptr = info->start;
@@ -172,6 +199,47 @@ void mmu_pf_free(void *pf) {
    if (enable_int) {
       STI;
    }
+}
+
+/*****************************************************************************/
+/* VIRTUAL PAGE ALLOCATOR */
+
+static void pte_init(PTE *page, void *next) {
+   page->present = 1;
+   page->write = 1;
+   page->user = 0;
+   page->addr = (uint64_t)next;
+}
+
+void mmu_pt_init() {
+   int i; 
+
+   /* Top level (PML4T & PML4E's) */
+   page_table = mmu_pf_alloc();
+   memset(page_table, 0, FRAME_SIZE);
+
+   /* Direct mapping (256KB) */
+   pages.direct.pd = mmu_pf_alloc();
+   pages.direct.pdp = mmu_pf_alloc();
+   memset(pages.direct.pd, 0, FRAME_SIZE);
+   memset(pages.direct.pdp, 0, FRAME_SIZE);
+   pte_init(page_table[PML4_OFF_DIRECT], pages.direct.pdp);
+   pte_init(pages.direct.pdp, pages.direct.pd);
+
+   /* Initialize the rest of the page tables */
+   for (i = 0; i < NUMP_DIRECT_MAP; ++i) {
+      pte_init(pages.direct.pd[i].addr, FRAME_START_ADDR + i * FRAME_SIZE);
+      pages.direct.pt = mmu_pf_alloc();
+   }
+}
+
+static void page_to_frame(void *p) {
+   PTE *pt_entry = page_table;
+   /* Top level */
+   vaddr_t vaddr = (vaddr_t)pt_entry->addr;
+   
+   /* PML4E */
+   page_table
 }
 
 /*****************************************************************************/

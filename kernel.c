@@ -1,4 +1,5 @@
 #include "kernel.h"
+
 #include "memory.h"
 #include "ps2.h"
 #include "interrupt.h"
@@ -19,10 +20,10 @@ void init_msg() {
 
 extern void kmain() {
    /*KeyPacket kp;*/
-   /*
+   
    int _cont = 0;
    while (!_cont);
-   */
+   
    
    irq_init();
 
@@ -41,7 +42,7 @@ extern void kmain() {
    asm("int $0x21"::);
    */
    
-   _stress_test_pf_allocator();
+   /*_stress_test_pf_allocator();*/
    /* _test_pf_allocator(); */
 
    while (1) {
