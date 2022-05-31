@@ -137,7 +137,6 @@ void irq_set_handler(int irq, irq_handler_t handler, void *arg);
 void irq_de(int, int, void *);
 void irq_df(int, int, void *);
 void irq_gp(int, int, void *);
-void irq_pf(int, int, void *);
 void irq_kb(int, int, void *);
 
 /* GDT */

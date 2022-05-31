@@ -24,6 +24,7 @@ extern void kmain() {
    int _cont = 0;
    while (!_cont);
    
+   CLI;
    
    irq_init();
 
@@ -34,6 +35,7 @@ extern void kmain() {
    kb_init();
    ser_init();
    mmu_pf_alloc_init();
+   mmu_pt_init();
 
    /* Enable interrupts */
    STI;

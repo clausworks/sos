@@ -116,7 +116,6 @@ void irq_init() {
    irq_set_handler(EXC_DE, irq_de, NULL);
    irq_set_handler(EXC_DF, irq_df, NULL);
    irq_set_handler(EXC_GP, irq_gp, NULL);
-   irq_set_handler(EXC_PF, irq_pf, NULL);
 
    /* Set up multiple stacks */
    tss_init();
@@ -204,8 +203,3 @@ void irq_df(int irq, int err, void *arg) {
 void irq_gp(int irq, int err, void *arg) {
    printk("General protection fault (error 0x%x)\n", err);
 }
-
-void irq_pf(int irq, int err, void *arg) {
-   printk("Page fault (error 0x%x)\n", err);
-}
-

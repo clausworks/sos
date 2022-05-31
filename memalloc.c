@@ -1,4 +1,5 @@
 #include <stdint-gcc.h>
+#include "memory.h"
 #include "memalloc.h"
 #include "io.h"
 #include "kernel.h"
@@ -6,24 +7,13 @@
 
 FreePageNode *free_pages_list = NULL;
 
-PTE *page_table;
-
 struct {
-   struct {
-      PTE *pdp;
-      PTE *pd;
-   } direct;
+   int free_start; /* kernel starting frame */
+   int unused_start; /* first unused frame (kernel uses frames) */
+   int num_free;
+} frame_info;
 
-   struct {
-   } kstacks;
-
-   struct {
-      PTE *pdp;
-      PTE *pd;
-      PTE *pt;
-   } kheap;
-} pages;
-
+uint64_t kheap_next = 0; /* not void * because we want to increment it */
 
 /*****************************************************************************/
 /* PAGE FRAME ALLOCATOR */
@@ -33,11 +23,11 @@ struct {
  * first block beginning with FRAME_START_ADDR (1M by default) is large enough
  * for the kernel and user programs.
  */
-static void parse_mmap(uint8_t *ptr, void **start, int *num_frames) {
+static void parse_mmap(uint8_t *ptr) {
    int offset = sizeof(MMapTag);
    MMapTag *tag = (MMapTag *)ptr;
    MMapInfo *info; 
-   uint64_t tmp_ptr = (uint64_t)*start;
+   uint64_t tmp_ptr; 
 
    for (; offset < tag->generic.size; offset += tag->info_size) {
       info = (MMapInfo *)(ptr + offset);
@@ -54,22 +44,23 @@ static void parse_mmap(uint8_t *ptr, void **start, int *num_frames) {
          if (tmp_ptr % FRAME_SIZE != 0) {
             tmp_ptr += FRAME_SIZE - (tmp_ptr % FRAME_SIZE);
          }
-         *num_frames = info->length / FRAME_SIZE;
+         frame_info.free_start = tmp_ptr / FRAME_SIZE;
+         frame_info.num_free = info->length / FRAME_SIZE;
          /* Ignore partial last frame (if present) */
          if (info->length % FRAME_SIZE) {
-            *num_frames -= 1;
+            frame_info.num_free -= 1;
          }
          break;
       }
    }
-   printk("Frames start at %lx; %d frames\n", tmp_ptr, *num_frames);
-   *start = (void *)tmp_ptr;
+   printk("Frames start at %lx; %d frames\n", 
+      tmp_ptr, frame_info.num_free);
 }
 
 /* Assume kernel allocation starts at FRAME_START_ADDR. Find the last frame used
  * by the kernel and return its number.
  */
-static int parse_elf(uint8_t *ptr) {
+static void parse_elf(uint8_t *ptr) {
    int offset = sizeof(ELFSymbolsTag);
    ELFSymbolsTag *tag = (ELFSymbolsTag *)ptr;
    ELFHeader *hdr; 
@@ -85,8 +76,8 @@ static int parse_elf(uint8_t *ptr) {
          endf = new_endf;
       }
    }
-   printk("First free frame: %d\n", endf + 1);
-   return endf + 1;
+   printk("First unused (free) frame: %d\n", endf + 1);
+   frame_info.unused_start = endf + 1;
 }
 
 /* Init the page frame allocator */
@@ -94,9 +85,6 @@ void mmu_pf_alloc_init() {
    MBGenericTag *tag_hdr;
    uint8_t *ptr = multiboot_pointer; /* copy to increment */
    int align_diff;
-   void *start_seg_addr;
-   int total_frames;
-   int first_unused_frame;
    int i;
    FreePageNode *n;
 
@@ -107,10 +95,10 @@ void mmu_pf_alloc_init() {
 
       switch (tag_hdr->type) {
          case MBTAG_MMAP_TYPE:
-            parse_mmap(ptr, &start_seg_addr, &total_frames);
+            parse_mmap(ptr);
             break;
          case MBTAG_ELF_TYPE:
-            first_unused_frame = parse_elf(ptr);
+            parse_elf(ptr);
             break;
          default:
             break;
@@ -127,10 +115,10 @@ void mmu_pf_alloc_init() {
    } while (tag_hdr->type != 0 || tag_hdr->size != 8); /* T=0, S=8: end tag */
 
    /* Initialize free frames */
-   free_pages_list = (FreePageNode *)((uint64_t)first_unused_frame * FRAME_SIZE);
+   free_pages_list = (FreePageNode *)((uint64_t)frame_info.unused_start * FRAME_SIZE);
    n = free_pages_list;
-   /*for (i = first_unused_frame; i < first_unused_frame + 5 - 1; ++i) {*/
-   for (i = first_unused_frame; i < total_frames - 1; ++i) {
+   /*for (i = frame_info.unused_start; i < frame_info.unused_start + 5 - 1; ++i) {*/
+   for (i = frame_info.unused_start; i < frame_info.num_free - 1; ++i) {
       n->next = (FreePageNode *)((uint8_t *)n + FRAME_SIZE);
       n->prev = (FreePageNode *)((uint8_t *)n - FRAME_SIZE);
       n = n->next;
@@ -153,6 +141,7 @@ void *mmu_pf_alloc() {
    /* No more unallocated pages */
    if (!free_pages_list) {
       printk("pf alloc failed\n");
+      HLT;
       return NULL;
    }
 
@@ -204,6 +193,22 @@ void mmu_pf_free(void *pf) {
 /*****************************************************************************/
 /* VIRTUAL PAGE ALLOCATOR */
 
+static inline PTE *get_pt_cr3() {
+   PTE *page_table;
+   asm volatile ("mov %%cr3, %0" : "=r"(page_table) ::);
+   return page_table;
+}
+
+static inline void set_pt_cr3(void *page_table) {
+   asm volatile ("mov %0, %%cr3" :: "dN"(page_table) :);
+}
+
+static inline void *get_addr_cr2() {
+   void *addr;
+   asm volatile ("mov %%cr2, %0" : "=r"(addr) ::);
+   return addr;
+}
+
 static void pte_init(PTE *page, void *next) {
    page->present = 1;
    page->write = 1;
@@ -211,35 +216,260 @@ static void pte_init(PTE *page, void *next) {
    page->addr = (uint64_t)next;
 }
 
-void mmu_pt_init() {
-   int i; 
+static inline void *get_addr(PTE *pte) {
+   uint64_t addr = pte->addr;
+   return (void *)addr;
+}
 
-   /* Top level (PML4T & PML4E's) */
+static inline PTE *get_lower_level(PTE *pte) {
+   return (PTE *)get_addr(pte);
+}
+
+static PTE *vaddr_to_pte(PTE *page_table, vaddr_t vaddr, int alloc) {
+   PTE *pml4e, *pdpe, *pde, *pte;
+   void *addr;
+   int enable_ints;
+
+   if (interrupts_enabled()) {
+      enable_ints = 1;
+      CLI;
+   }
+   
+   /* PML4 entry: must be allocated during init */
+   pml4e = page_table + vaddr.pml4;
+   if (!pml4e->present) {
+      if (enable_ints) STI;
+      return NULL;
+   }
+   pdpe = get_lower_level(pml4e) + vaddr.pdp;
+
+   /* PDP entry: can be allocated on-demand */
+   if (!pdpe->present && !alloc) {
+      if (enable_ints) STI;
+      return NULL;
+   }
+   if (!pdpe->present && alloc) {
+      printk("alloc PDPE/PD: PDP %d, PD %d\n", vaddr.pdp, vaddr.pd);
+      printk("\t%lx\n", vaddr.addr);
+      addr = mmu_pf_alloc();
+      pte_init(pdpe, addr);
+   }
+   pde = get_lower_level(pdpe) + vaddr.pd;
+   
+   /* PD entry: can be allocated on-demand */
+   if (!pde->present && !alloc) {
+      if (enable_ints) STI;
+      return NULL;
+   }
+   if (!pde->present && alloc) {
+      printk("alloc PDE/PT: PD %d, PT %d\n", vaddr.pd, vaddr.pt);
+      printk("\t%lx\n", vaddr.addr);
+      addr = mmu_pf_alloc();
+      pte_init(pde, addr);
+   }
+   pte = get_lower_level(pde) + vaddr.pt;
+
+   if (enable_ints) STI;
+   return pte;
+}
+
+void mmu_pt_init() {
+   uint64_t i;
+   PTE *pdp;
+   PTE *pte;
+   vaddr_t vaddr;
+
+   static PTE *page_table; /* kernel page table */
+
+   /* Top level */
    page_table = mmu_pf_alloc();
    memset(page_table, 0, FRAME_SIZE);
 
-   /* Direct mapping (256KB) */
-   pages.direct.pd = mmu_pf_alloc();
-   pages.direct.pdp = mmu_pf_alloc();
-   memset(pages.direct.pd, 0, FRAME_SIZE);
-   memset(pages.direct.pdp, 0, FRAME_SIZE);
-   pte_init(page_table[PML4_OFF_DIRECT], pages.direct.pdp);
-   pte_init(pages.direct.pdp, pages.direct.pd);
+   /* Direct mapping (64*4K) */
+   pdp = mmu_pf_alloc();
+   memset(pdp, 0, FRAME_SIZE);
+   pte_init(page_table + PML4_OFF_DIRECT, pdp);
 
-   /* Initialize the rest of the page tables */
+   /*
+   pd = mmu_pf_alloc();
+   memset(pd, 0, FRAME_SIZE);
+   pte_init(pdp, pd);
+   */
+   
+   /* Initialize direct map PT's */
+   /*
+   pf = (uint8_t *)FRAME_START_ADDR;
    for (i = 0; i < NUMP_DIRECT_MAP; ++i) {
-      pte_init(pages.direct.pd[i].addr, FRAME_START_ADDR + i * FRAME_SIZE);
-      pages.direct.pt = mmu_pf_alloc();
+      pt = mmu_pf_alloc();
+      memset(pt, 0, FRAME_SIZE);
+      pte_init(pd + i, pt);
+      */
+      /* Fill each PT with direct-map frames */
+      /*
+      for (j = 0; j < ENTRIES_PER_PT; ++j) {
+         pte_init(pt + j, pf);
+         pf += FRAME_SIZE;
+      }
+   }
+   */
+
+   /* Set page 0 to "not present" */
+   vaddr.addr = 0;
+   pte = vaddr_to_pte(page_table, vaddr, 1);
+   pte->present = 0;
+
+   for (i = 1; i < frame_info.free_start + frame_info.num_free; ++i) {
+      vaddr.addr = i * FRAME_SIZE;
+      pte_init(vaddr_to_pte(page_table, vaddr, 1), (void *)vaddr.addr);
+   }
+
+   /* Kernel Heap */
+   pdp = mmu_pf_alloc();
+   memset(pdp, 0, FRAME_SIZE);
+   pte_init(page_table + PML4_OFF_KHEAP, pdp);
+
+   kheap_next = KHEAP_BASE;
+
+   irq_set_handler(EXC_PF, irq_pf, page_table);
+
+   /* Change page table */
+   set_pt_cr3(page_table);
+}
+
+/* Allocate a page from the heap. 
+ * Set a page as present, but not demanded */
+void *mmu_alloc_page() {
+   PTE *pte;
+   vaddr_t vaddr;
+   int enable_ints = 0;
+
+   if (interrupts_enabled()) {
+      enable_ints = 1;
+      CLI;
+   }
+
+   vaddr.addr = kheap_next;
+   kheap_next += FRAME_SIZE;
+
+   pte = vaddr_to_pte(get_pt_cr3(), vaddr, 1);
+   
+   if (pte == NULL) {
+      printk("mmu_alloc_page failed: %lx\n", vaddr.addr);
+      if (enable_ints) {
+         STI;
+      }
+      return NULL;
+   }
+
+   pte->present = 1;
+   pte->write = 1;
+   pte->user = 0;
+   pte->demand = 1; /* get physical frame on next access */
+
+   if (enable_ints) {
+      STI;
+   }
+
+   return (void *)vaddr.addr;
+}
+
+/* Allocate n (n >= 1) pages contiguously. */
+void *mmu_alloc_pages(int n) {
+   int i;
+   void *start = mmu_alloc_page();
+   int enable_ints = 0;
+
+   if (interrupts_enabled()) {
+      enable_ints = 1;
+      CLI;
+   }
+
+   for (i = 1; i < n; ++i) {
+      /* These are guaranteed to be contiguous because mmu_alloc_page simply
+       * increments kheap_next with each run. */
+      mmu_alloc_page();
+   }
+
+   if (enable_ints) {
+      STI;
+   }
+
+   return start;
+}
+
+/* Free a page from the heap.
+ * Set a page as not present, and free the associated frame */
+void mmu_free_page(void *addr) {
+   vaddr_t vaddr;
+   PTE *pte;
+   int enable_ints = 0;
+
+   if (interrupts_enabled()) {
+      enable_ints = 1;
+      CLI;
+   }
+
+   vaddr.addr = (uint64_t)addr;
+   pte = vaddr_to_pte(get_pt_cr3(), vaddr, 0);
+
+   if (pte == NULL) {
+      printk("mmu_free_page failed: %p\n", addr);
+      if (enable_ints) {
+         STI;
+      }
+      return;
+   }
+   
+   /* Free the physical frame */
+   mmu_pf_free(get_lower_level(pte));
+   /* Set not present, etc. */
+   memset(pte, 0, sizeof(PTE));
+
+   if (enable_ints) {
+      STI;
    }
 }
 
-static void page_to_frame(void *p) {
-   PTE *pt_entry = page_table;
-   /* Top level */
-   vaddr_t vaddr = (vaddr_t)pt_entry->addr;
-   
-   /* PML4E */
-   page_table
+void mmu_free_pages(void *addr, int n) {
+   uint8_t *page = addr;
+   int i;
+   int enable_ints = 0;
+
+   if (interrupts_enabled()) {
+      enable_ints = 1;
+      CLI;
+   }
+
+   for (i = 0; i < n; ++i) {
+      mmu_free_page(page);
+      page += FRAME_SIZE;
+   }
+   if (enable_ints) {
+      STI;
+   }
+}
+
+/* When a page fault occurs:
+ * 1. If the page is present but not demanded, allocate frame
+ * 2. If the page is not present, or the demand bit is not set, throw an error
+ */
+void irq_pf(int irq, int err, void *arg) {
+   PTE *page_table = get_pt_cr3();
+   vaddr_t vaddr;
+   PTE *pte;
+  
+   vaddr.addr = (uint64_t)get_addr_cr2(); 
+   pte = vaddr_to_pte(page_table, vaddr, 0);
+
+   if (pte != NULL && pte->demand) {
+      pte->demand = 0;
+      pte->addr = (uint64_t)mmu_pf_alloc();
+   }
+   else {
+      printk("Page fault at %lx\n\terror %d (%x)\n\ttable %p\n",
+         vaddr.addr, err, err, page_table); 
+      HLT;
+   }
 }
 
 /*****************************************************************************/
