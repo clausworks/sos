@@ -24,6 +24,7 @@ extern void kmain() {
    while (!_cont);
    */
    
+   
    CLI;
    
    irq_init();
@@ -45,10 +46,10 @@ extern void kmain() {
    */
 
    _stress_test_paging();
-  /*
+   /*
    _test_stack_alloc();
-
    */
+
    while (1) {
       HLT;
    }
