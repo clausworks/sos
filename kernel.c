@@ -45,11 +45,6 @@ extern void kmain() {
    asm("int $0x21"::);
    */
 
-   _stress_test_paging();
-   /*
-   _test_stack_alloc();
-   */
-
    while (1) {
       HLT;
    }
