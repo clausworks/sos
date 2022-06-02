@@ -3,8 +3,8 @@
 
 #include <stdint-gcc.h>
 
-typedef struct KMFreeList {
-   KMFreeList *next;
+typedef struct _KMFreeList {
+   struct _KMFreeList *next;
 } KMFreeList;
 
 typedef struct KMPool {
