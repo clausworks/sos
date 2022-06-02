@@ -37,11 +37,7 @@ void io_wait(void) {
  * vga_cursor.
  */
 void vga_display_char(char c, uint16_t attr) {
-   int enable_int = 0;
-   if (interrupts_enabled()) {
-      CLI;
-      enable_int = 1;
-   }
+   CLI_COND;
 
    switch (c) {
    case '\n':
@@ -65,31 +61,22 @@ void vga_display_char(char c, uint16_t attr) {
       memset(VGA_BASE + (VGA_H - 1) * VGA_W, 0, sizeof(uint16_t) * VGA_W);
       vga_cursor -= VGA_W;
    }
-
-   if (enable_int) {
-      STI;
-   }
+   
+   STI_COND;
 }
 
 /* Clear the display.
  */
 void vga_clear() {
    int i;
-   int enable_int = 0;
-
-   if (interrupts_enabled()) {
-      CLI;
-      enable_int = 1;
-   }
+   CLI_COND;
 
    for (i = 0; i < VGA_H * VGA_W; ++i) {
       vga_display_char(' ', DEFAULT_ATTR);
    }
    vga_cursor = 0;
 
-   if (enable_int) {
-      STI;
-   }
+   STI_COND;
 }
 
 /* Write a null-terminated string, beginning at the specified cursor location.
@@ -165,12 +152,7 @@ void irq_ser(int irq, int err, void *arg) {
 }
 
 void ser_write_char(char c) {
-   int enable_int = 0;
-
-   if (interrupts_enabled()) {
-      CLI;
-      enable_int = 1;
-   }
+   CLI_COND;
 
    /* Check if buffer has room */
    if (ser_state.start != (ser_state.end + 1) % SER_BUFF_SIZE) {
@@ -179,9 +161,7 @@ void ser_write_char(char c) {
       ser_begin_tx();
    }
 
-   if (enable_int) {
-      STI;
-   }
+   STI_COND;
 }
 
 void ser_write_str(char *str) {

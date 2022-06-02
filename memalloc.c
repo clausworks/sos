@@ -13,7 +13,8 @@ struct {
    int num_free;
 } frame_info;
 
-uint64_t kheap_next = 0; /* not void * because we want to increment it */
+uint8_t *kheap_next = 0; /* not void * because we want to increment it */
+uint8_t *kstack_next = 0;
 
 /*****************************************************************************/
 /* PAGE FRAME ALLOCATOR */
@@ -132,11 +133,7 @@ void mmu_pf_alloc_init() {
 
 void *mmu_pf_alloc() {
    void *allocated_page;
-   int enable_int = 0;
-   if (interrupts_enabled()) {
-      CLI;
-      enable_int = 1;
-   }
+   CLI_COND;
 
    /* No more unallocated pages */
    if (!free_pages_list) {
@@ -158,19 +155,14 @@ void *mmu_pf_alloc() {
       free_pages_list = free_pages_list->next;
    }
 
-   if (enable_int) {
-      STI;
-   }
+   /*printk("allocated page %p\n", allocated_page);*/
+   STI_COND;
    return allocated_page;
 }
 
 void mmu_pf_free(void *pf) {
    FreePageNode *fp_node = pf;
-   int enable_int = 0;
-   if (interrupts_enabled()) {
-      CLI;
-      enable_int = 1;
-   }
+   CLI_COND;
 
    /* First free page */
    if (free_pages_list == NULL) {
@@ -185,9 +177,7 @@ void mmu_pf_free(void *pf) {
       free_pages_list->prev = fp_node;
    }
    
-   if (enable_int) {
-      STI;
-   }
+   STI_COND;
 }
 
 /*****************************************************************************/
@@ -209,16 +199,21 @@ static inline void *get_addr_cr2() {
    return addr;
 }
 
-static void pte_init(PTE *page, void *next) {
-   page->present = 1;
-   page->write = 1;
-   page->user = 0;
-   page->addr = (uint64_t)next;
+static inline void set_addr(PTE *pte, void *addr) {
+   pte->addr = ((uint64_t)addr) >> 12;
 }
 
 static inline void *get_addr(PTE *pte) {
    uint64_t addr = pte->addr;
+   addr = addr << 12;
    return (void *)addr;
+}
+
+static void pte_init(PTE *page, void *next) {
+   page->present = 1;
+   page->write = 1;
+   page->user = 0;
+   set_addr(page, next);
 }
 
 static inline PTE *get_lower_level(PTE *pte) {
@@ -228,48 +223,45 @@ static inline PTE *get_lower_level(PTE *pte) {
 static PTE *vaddr_to_pte(PTE *page_table, vaddr_t vaddr, int alloc) {
    PTE *pml4e, *pdpe, *pde, *pte;
    void *addr;
-   int enable_ints;
-
-   if (interrupts_enabled()) {
-      enable_ints = 1;
-      CLI;
-   }
+   CLI_COND;
    
    /* PML4 entry: must be allocated during init */
    pml4e = page_table + vaddr.pml4;
    if (!pml4e->present) {
-      if (enable_ints) STI;
+      STI_COND;
       return NULL;
    }
    pdpe = get_lower_level(pml4e) + vaddr.pdp;
 
    /* PDP entry: can be allocated on-demand */
    if (!pdpe->present && !alloc) {
-      if (enable_ints) STI;
+      STI_COND;
       return NULL;
    }
    if (!pdpe->present && alloc) {
-      printk("alloc PDPE/PD: PDP %d, PD %d\n", vaddr.pdp, vaddr.pd);
-      printk("\t%lx\n", vaddr.addr);
+      /*printk("alloc PDPE/PD: PDP %d, PD %d\n", vaddr.pdp, vaddr.pd);*/
+      /*printk("\t%lx\n", vaddr.addr);*/
       addr = mmu_pf_alloc();
+      memset(addr, 0, FRAME_SIZE);
       pte_init(pdpe, addr);
    }
    pde = get_lower_level(pdpe) + vaddr.pd;
    
    /* PD entry: can be allocated on-demand */
    if (!pde->present && !alloc) {
-      if (enable_ints) STI;
+      STI_COND;
       return NULL;
    }
    if (!pde->present && alloc) {
-      printk("alloc PDE/PT: PD %d, PT %d\n", vaddr.pd, vaddr.pt);
-      printk("\t%lx\n", vaddr.addr);
+      /*printk("alloc PDE/PT: PD %d, PT %d\n", vaddr.pd, vaddr.pt);*/
+      /*printk("\t%lx\n", vaddr.addr);*/
       addr = mmu_pf_alloc();
+      memset(addr, 0, FRAME_SIZE);
       pte_init(pde, addr);
    }
    pte = get_lower_level(pde) + vaddr.pt;
 
-   if (enable_ints) STI;
+   STI_COND;
    return pte;
 }
 
@@ -278,8 +270,9 @@ void mmu_pt_init() {
    PTE *pdp;
    PTE *pte;
    vaddr_t vaddr;
+   PTE *page_table; /* kernel page table */
 
-   static PTE *page_table; /* kernel page table */
+   irq_set_handler(EXC_PF, irq_pf, NULL);
 
    /* Top level */
    page_table = mmu_pf_alloc();
@@ -289,29 +282,6 @@ void mmu_pt_init() {
    pdp = mmu_pf_alloc();
    memset(pdp, 0, FRAME_SIZE);
    pte_init(page_table + PML4_OFF_DIRECT, pdp);
-
-   /*
-   pd = mmu_pf_alloc();
-   memset(pd, 0, FRAME_SIZE);
-   pte_init(pdp, pd);
-   */
-   
-   /* Initialize direct map PT's */
-   /*
-   pf = (uint8_t *)FRAME_START_ADDR;
-   for (i = 0; i < NUMP_DIRECT_MAP; ++i) {
-      pt = mmu_pf_alloc();
-      memset(pt, 0, FRAME_SIZE);
-      pte_init(pd + i, pt);
-      */
-      /* Fill each PT with direct-map frames */
-      /*
-      for (j = 0; j < ENTRIES_PER_PT; ++j) {
-         pte_init(pt + j, pf);
-         pf += FRAME_SIZE;
-      }
-   }
-   */
 
    /* Set page 0 to "not present" */
    vaddr.addr = 0;
@@ -328,95 +298,128 @@ void mmu_pt_init() {
    memset(pdp, 0, FRAME_SIZE);
    pte_init(page_table + PML4_OFF_KHEAP, pdp);
 
-   kheap_next = KHEAP_BASE;
+   kheap_next = (uint8_t *)KHEAP_BASE;
 
-   irq_set_handler(EXC_PF, irq_pf, page_table);
+   /* Kernel stacks */
+   pdp = mmu_pf_alloc();
+   memset(pdp, 0, FRAME_SIZE);
+   pte_init(page_table + PML4_OFF_KSTACK, pdp);
+
+   kstack_next = (uint8_t *)KSTACK_BASE;
 
    /* Change page table */
    set_pt_cr3(page_table);
+   printk("Page table changed: 0x%p\n", page_table);
 }
 
-/* Allocate a page from the heap. 
- * Set a page as present, but not demanded */
-void *mmu_alloc_page() {
+/* Allocate a page at the given virtual address.
+ * - addr is aligned to page boundary
+ * - present bit set to 0, causing a page fault on first access
+ * - if demand is true, then the page fault handler will allocate a
+ * corresponding frame on the first access */
+static void *mmu_alloc_page(void *addr, int demand) {
    PTE *pte;
    vaddr_t vaddr;
-   int enable_ints = 0;
+   CLI_COND;
 
-   if (interrupts_enabled()) {
-      enable_ints = 1;
-      CLI;
+   vaddr.addr = (uint64_t)addr;
+   if (vaddr.phys != 0) {
+      printk("mmu_alloc_page: aligning %p to 4K boundary\n", addr);
+      vaddr.phys = 0;
    }
-
-   vaddr.addr = kheap_next;
-   kheap_next += FRAME_SIZE;
 
    pte = vaddr_to_pte(get_pt_cr3(), vaddr, 1);
    
    if (pte == NULL) {
       printk("mmu_alloc_page failed: %lx\n", vaddr.addr);
-      if (enable_ints) {
-         STI;
-      }
+      STI_COND;
       return NULL;
    }
 
-   pte->present = 1;
+   pte->present = 0;
    pte->write = 1;
    pte->user = 0;
-   pte->demand = 1; /* get physical frame on next access */
+   pte->demand = demand; /* get physical frame on next access */
 
-   if (enable_ints) {
-      STI;
-   }
+   STI_COND;
 
    return (void *)vaddr.addr;
 }
 
-/* Allocate n (n >= 1) pages contiguously. */
-void *mmu_alloc_pages(int n) {
-   int i;
-   void *start = mmu_alloc_page();
-   int enable_ints = 0;
+/* Allocate a page from the heap. 
+ * Set a page as present, but not demanded */
+void *mmu_alloc_heap_page() {
+   void *addr;
+   CLI_COND;
 
-   if (interrupts_enabled()) {
-      enable_ints = 1;
-      CLI;
-   }
+   addr = mmu_alloc_page(kheap_next, 1);
+   kheap_next += FRAME_SIZE;
+
+   STI_COND;
+   return addr;
+}
+
+/* Allocate n (n >= 1) pages contiguously. */
+void *mmu_alloc_heap_pages(int n) {
+   int i;
+   void *start = mmu_alloc_heap_page();
+   CLI_COND;
 
    for (i = 1; i < n; ++i) {
       /* These are guaranteed to be contiguous because mmu_alloc_page simply
        * increments kheap_next with each run. */
-      mmu_alloc_page();
+      mmu_alloc_heap_page();
    }
 
-   if (enable_ints) {
-      STI;
-   }
-
+   STI_COND;
    return start;
 }
 
-/* Free a page from the heap.
+/* Create a kernel stack and return a pointer to the top of the stack.
+ * Two additional pages will be used (upper and lower bounds) to prevent
+ * a stack overflow or underflow.
+ */
+void *mmu_alloc_stack() {
+   uint64_t *addr;
+   int i;
+   CLI_COND;
+   
+   /* bottom of stack: don't demand */
+   addr = mmu_alloc_page(kstack_next, 0);
+   printk("  stack bottom %p\n", addr);
+   kstack_next += FRAME_SIZE;
+
+   /* middle pages: present */
+   for (i = 2; i < NUMP_KSTACK; ++i) {
+      addr = mmu_alloc_page(kstack_next, 1);
+      kstack_next += FRAME_SIZE;
+   }
+   printk("  stack top usable page %p\n", addr);
+
+   /* top of stack: don't demand */
+   addr = mmu_alloc_page(kstack_next, 0);
+   printk("  stack top page base %p\n", addr);
+   addr -= 1; /* top of top present page */
+   printk("  stack top %p\n", addr);
+   kstack_next += FRAME_SIZE;
+
+   STI_COND;
+   return addr;
+}
+
+/* Free a page (stack or heap).
  * Set a page as not present, and free the associated frame */
-void mmu_free_page(void *addr) {
+static void mmu_free_page(void *addr) {
    vaddr_t vaddr;
    PTE *pte;
-   int enable_ints = 0;
-
-   if (interrupts_enabled()) {
-      enable_ints = 1;
-      CLI;
-   }
+   CLI_COND;
 
    vaddr.addr = (uint64_t)addr;
    pte = vaddr_to_pte(get_pt_cr3(), vaddr, 0);
 
    if (pte == NULL) {
       printk("mmu_free_page failed: %p\n", addr);
-      if (enable_ints) {
-         STI;
-      }
+      STI_COND;
       return;
    }
    
@@ -425,28 +428,37 @@ void mmu_free_page(void *addr) {
    /* Set not present, etc. */
    memset(pte, 0, sizeof(PTE));
 
-   if (enable_ints) {
-      STI;
-   }
+   STI_COND;
 }
 
-void mmu_free_pages(void *addr, int n) {
+void mmu_free_heap_page(void *addr) {
+   mmu_free_page(addr);
+}
+
+void mmu_free_heap_pages(void *addr, int n) {
    uint8_t *page = addr;
    int i;
-   int enable_ints = 0;
-
-   if (interrupts_enabled()) {
-      enable_ints = 1;
-      CLI;
-   }
+   CLI_COND;
 
    for (i = 0; i < n; ++i) {
       mmu_free_page(page);
       page += FRAME_SIZE;
    }
-   if (enable_ints) {
-      STI;
+   STI_COND;
+}
+
+/* Free a stack frame and associated frames. */
+void mmu_free_stack(void *stack_base) {
+   uint8_t *addr = (uint8_t *)stack_base;
+   int i;
+   CLI_COND;
+   addr += FRAME_SIZE; /* first present page */
+   for (i = 2; i < NUMP_KSTACK; ++i) {
+      mmu_free_page(addr);
+      addr += FRAME_SIZE;
    }
+   /* last page is already not present */
+   STI_COND;
 }
 
 /* When a page fault occurs:
@@ -455,6 +467,7 @@ void mmu_free_pages(void *addr, int n) {
  */
 void irq_pf(int irq, int err, void *arg) {
    PTE *page_table = get_pt_cr3();
+   void *addr;
    vaddr_t vaddr;
    PTE *pte;
   
@@ -462,8 +475,11 @@ void irq_pf(int irq, int err, void *arg) {
    pte = vaddr_to_pte(page_table, vaddr, 0);
 
    if (pte != NULL && pte->demand) {
+      pte->present = 1;
       pte->demand = 0;
-      pte->addr = (uint64_t)mmu_pf_alloc();
+      addr = mmu_pf_alloc();
+      memset(addr, 0, FRAME_SIZE);
+      set_addr(pte, addr);
    }
    else {
       printk("Page fault at %lx\n\terror %d (%x)\n\ttable %p\n",
@@ -473,7 +489,100 @@ void irq_pf(int irq, int err, void *arg) {
 }
 
 /*****************************************************************************/
-/* TEST CASES */
+/* TEST CASES: VIRTUAL PAGE ALLOCATOR */
+
+void _fill(void *vaddr, uint64_t nwords) {
+   int i;
+   uint64_t *data = (uint64_t *)vaddr;
+   for (i = 0; i < nwords; ++i) {
+      data[i] = (uint64_t)vaddr;
+   }
+}
+
+void _verify(void *vaddr, uint64_t nwords) {
+   int i;
+   uint64_t *data = (uint64_t *)vaddr;
+   for (i = 0; i < nwords; ++i) {
+      if (data[i] != (uint64_t)vaddr) {
+         printk("Verify failed:\n");
+         printk("\taddr   = %p\n", &data[i]);
+         printk("\tactual = %lx\n", data[i]);
+         printk("\texpect = %p\n", vaddr);
+         return;
+      }
+   }
+}
+
+void _stress_test_paging() {
+   uint64_t *single, *multiple, *mixed1, *mixed2;
+   PTE *pte;
+   vaddr_t vaddr;
+   
+   printk("\n");
+   single = mmu_alloc_heap_page();
+   _fill(single, FRAME_SIZE / sizeof(uint64_t));
+   _verify(single, FRAME_SIZE / sizeof(uint64_t));
+   mmu_free_heap_page(single);
+   printk("test 1: 1 page @ %p\n", single);
+
+   printk("\n");
+   multiple = mmu_alloc_heap_pages(100);
+   _fill(multiple, 100 * FRAME_SIZE / sizeof(uint64_t));
+   _verify(multiple, 100 * FRAME_SIZE / sizeof(uint64_t));
+   mmu_free_heap_pages(multiple, 100);
+   printk("test 2: 100 pages @ %p\n", multiple);
+
+   printk("\n");
+   mixed1 = mmu_alloc_heap_pages(10);
+   mixed2 = mmu_alloc_heap_pages(10);
+   _fill(mixed1, 10 * FRAME_SIZE / sizeof(uint64_t));
+   _fill(mixed2, 10 * FRAME_SIZE / sizeof(uint64_t));
+   _verify(mixed2, 10 * FRAME_SIZE / sizeof(uint64_t));
+   _verify(mixed1, 10 * FRAME_SIZE / sizeof(uint64_t));
+   mmu_free_heap_pages(mixed1, 10);
+   mmu_free_heap_pages(mixed2, 10);
+   printk("test 3: two sets of 10\n\t@ %p\n\t@ %p\n", mixed1, mixed2);
+
+   printk("\n");
+   printk("test 4: access freed page @ %p\n", single);
+   vaddr.addr = (uint64_t)single;
+   pte = vaddr_to_pte(get_pt_cr3(), vaddr, 0);
+   printk("pte = %p\n", pte);
+   *single = 10;
+
+   printk("test 5: access null pointer\n");
+   single = 0;
+   *single = 10;
+
+   printk("Done\n");
+}
+
+void _test_stack_alloc() {
+   uint64_t *sp;
+   /*
+   int i;
+   */
+   printk("\n");
+   sp = mmu_alloc_stack();
+   *sp = 0;
+   /**(sp + 1) = 0;*/ /* page fault */
+   /* write until we hit a page fault */
+   /*
+   for (i = 0; i >= 0; ++i) {
+      sp[-i] = 0;
+   }
+   */
+   sp = mmu_alloc_stack();
+   /*
+   for (i = 0; i < (NUMP_KSTACK - 2)*(FRAME_SIZE / sizeof(uint8_t)); ++i) {
+      sp[-i] = (uint64_t)sp;
+   }
+   */
+   /*mmu_free_stack(sp);*/ /* TODO: parameter passed in should be auto-aligned */
+}
+
+/*****************************************************************************/
+/* TEST CASES: PAGE FRAME ALLOCATOR */
 
 void _fill_pf(void *pf) {
    int i;

@@ -19,10 +19,10 @@ void init_msg() {
 }
 
 extern void kmain() {
-   /*KeyPacket kp;*/
-   
+   /*
    int _cont = 0;
    while (!_cont);
+   */
    
    CLI;
    
@@ -43,10 +43,12 @@ extern void kmain() {
    /*
    asm("int $0x21"::);
    */
-   
-   /*_stress_test_pf_allocator();*/
-   /* _test_pf_allocator(); */
 
+   _stress_test_paging();
+  /*
+   _test_stack_alloc();
+
+   */
    while (1) {
       HLT;
    }

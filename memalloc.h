@@ -54,20 +54,9 @@ typedef union vaddr_t {
       uint64_t pd : 9;
       uint64_t pdp : 9;
       uint64_t pml4 : 9;
-      uint64_t sext : 16;
+      uint64_t sext : 16; /* TODO: implement sign extension? */
    } __attribute__((packed));
 } vaddr_t;
-
-/*
-typedef struct vaddr_t {
-   uint64_t phys : 12;
-   uint64_t pt : 9;
-   uint64_t pd : 9;
-   uint64_t pdp : 9;
-   uint64_t pml4 : 9;
-   uint64_t sext : 16;
-} __attribute__((packed)) vaddr_t;
-*/
 
 typedef struct PTE {
    uint64_t present : 1;
@@ -93,33 +82,42 @@ typedef struct PTE {
 #define FRAME_SIZE 0x1000 /* 4K */
 #define FRAME_START (FRAME_START_ADDR / FRAME_SIZE)
 
-
 /* Number of pages */
-#define NUMP_DIRECT_MAP 64
-#define NUMP_KERNEL_STACK 16
-#define NUMP_KERNEL_HEAP 16
 #define ENTRIES_PER_PT 512
+#define NUMP_KSTACK 512 /* 1 PT per stack = 2MB */
+
+#define KSTACK_SIZE (NUMP_KERNEL_STACK * FRAME_SIZE)
 
 /* Offsets */
-#define PML4_OFF_DIRECT 0L
-#define PML4_OFF_KSTACK 1L
-#define PML4_OFF_KHEAP 15L
+#define PML4_OFF_DIRECT       0x0L
+#define PML4_OFF_KSTACK       0x1L
+#define PML4_OFF_KHEAP        0xFL
+#define PML4_OFF_USER_START   0x10L
+
 #define KHEAP_BASE (PML4_OFF_KHEAP << 39)
 #define KSTACK_BASE (PML4_OFF_KSTACK << 39)
+#define USER_START_ADDR (PML4_OFF_USER_START << 39)
+
 
 /* Physical */
 void mmu_pf_alloc_init(void);
 void *mmu_pf_alloc(void);
 void mmu_pf_free(void *);
+
 /* Virtual */
 void mmu_pt_init(void);
-void *mmu_alloc_page(void);
-void *mmu_alloc_pages(int num);
-void mmu_free_page(void *);
-void mmu_free_pages(void *, int);
+void *mmu_alloc_stack(void);
+void *mmu_alloc_heap_page(void);
+void *mmu_alloc_heap_pages(int num);
+void mmu_free_heap_page(void *);
+void mmu_free_heap_pages(void *, int);
+void mmu_free_stack(void *);
+
 void irq_pf(int, int, void *);
 
 void _stress_test_pf_allocator(void);
 void _test_pf_allocator(void);
+void _stress_test_paging(void);
+void _test_stack_alloc(void);
 
 #endif

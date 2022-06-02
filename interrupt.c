@@ -198,8 +198,10 @@ void irq_de(int irq, int err, void *arg) {
 
 void irq_df(int irq, int err, void *arg) {
    printk("Double fault (error 0x%x)\n", err);
+   HLT;
 }
 
 void irq_gp(int irq, int err, void *arg) {
    printk("General protection fault (error 0x%x)\n", err);
+   HLT;
 }
