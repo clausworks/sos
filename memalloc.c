@@ -183,6 +183,12 @@ void mmu_pf_free(void *pf) {
 /*****************************************************************************/
 /* VIRTUAL PAGE ALLOCATOR */
 
+static inline void invlpg(void* m) {
+    /* Clobber memory to avoid optimizer re-ordering access before invlpg,
+     * which may cause nasty bugs. */
+    asm volatile ( "invlpg (%0)" : : "b"(m) : "memory" );
+}
+
 static inline PTE *get_pt_cr3() {
    PTE *page_table;
    asm volatile ("mov %%cr3, %0" : "=r"(page_table) ::);
@@ -423,8 +429,12 @@ static void mmu_free_page(void *addr) {
       return;
    }
    
-   /* Free the physical frame */
-   mmu_pf_free(get_lower_level(pte));
+   /* Free the physical frame, if present */
+   if (pte->present) {
+      mmu_pf_free(get_lower_level(pte));
+   }
+   /* Invalidate page to clear from TLB */
+   invlpg(addr);
    /* Set not present, etc. */
    memset(pte, 0, sizeof(PTE));
 
@@ -448,14 +458,19 @@ void mmu_free_heap_pages(void *addr, int n) {
 }
 
 /* Free a stack frame and associated frames. */
-void mmu_free_stack(void *stack_base) {
-   uint8_t *addr = (uint8_t *)stack_base;
+void mmu_free_stack(void *sp) {
+   vaddr_t sp_base;
    int i;
    CLI_COND;
-   addr += FRAME_SIZE; /* first present page */
+
+   /* Adjust address to first usable page of given stack */
+   sp_base.addr = (uint64_t)sp;
+   sp_base.phys = 0;
+   sp_base.pt = 1;
+
    for (i = 2; i < NUMP_KSTACK; ++i) {
-      mmu_free_page(addr);
-      addr += FRAME_SIZE;
+      mmu_free_page((void *)sp_base.addr);
+      sp_base.pt += 1;
    }
    /* last page is already not present */
    STI_COND;
@@ -565,20 +580,21 @@ void _test_stack_alloc() {
    printk("\n");
    sp = mmu_alloc_stack();
    *sp = 0;
+
+   /*
+   printk("freeing\n");
+   mmu_free_stack(sp);
+   *sp = 0;
+   */
+
    /**(sp + 1) = 0;*/ /* page fault */
-   /* write until we hit a page fault */
+
+   /* stack overflow: write until we hit a page fault */
    /*
    for (i = 0; i >= 0; ++i) {
       sp[-i] = 0;
    }
    */
-   sp = mmu_alloc_stack();
-   /*
-   for (i = 0; i < (NUMP_KSTACK - 2)*(FRAME_SIZE / sizeof(uint8_t)); ++i) {
-      sp[-i] = (uint64_t)sp;
-   }
-   */
-   /*mmu_free_stack(sp);*/ /* TODO: parameter passed in should be auto-aligned */
 }
 
 /*****************************************************************************/
