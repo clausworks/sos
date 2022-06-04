@@ -7,7 +7,7 @@ typedef void (*irq_handler_t)(int, int, void *);
 
 typedef struct IDTEntry {
    uint16_t offset_15_0;
-   uint16_t target; /* TODO: what is this? */
+   uint16_t target;
    uint16_t ist : 3;
    uint16_t : 5;
    uint16_t type : 4;

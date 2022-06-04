@@ -1,10 +1,10 @@
 #include "kernel.h"
-
 #include "memory.h"
 #include "ps2.h"
 #include "interrupt.h"
 #include "io.h"
 #include "memalloc.h"
+#include "kmalloc.h"
 
 void init_msg() {
    vga_clear();
@@ -24,7 +24,6 @@ extern void kmain() {
    while (!_cont);
    */
    
-   
    CLI;
    
    irq_init();
@@ -37,6 +36,7 @@ extern void kmain() {
    ser_init();
    mmu_pf_alloc_init();
    mmu_pt_init();
+   kmalloc_init();
 
    /* Enable interrupts */
    STI;
@@ -44,6 +44,12 @@ extern void kmain() {
    /*
    asm("int $0x21"::);
    */
+
+
+   /*
+   _test_kmalloc_basic();
+   */
+   _test_kmalloc_multipage();
 
    while (1) {
       HLT;
