@@ -182,8 +182,8 @@ void _test_kmalloc_basic() {
       kfree(p[i]);
    }
 
-   /* overflow */
-   printk("\nextensions\n");
+   /* extending pool */
+   printk("\nextending pool\n");
    km_pool_stats(&pools[KM_NUM_SIZES - 1]);
    for (i = 0; i < KM_NUM_SIZES; ++i) {
       p[i] = kmalloc(2000);

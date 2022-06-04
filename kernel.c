@@ -46,10 +46,10 @@ extern void kmain() {
    */
 
 
-   /*
    _test_kmalloc_basic();
-   */
+   /*
    _test_kmalloc_multipage();
+   */
 
    while (1) {
       HLT;
