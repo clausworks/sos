@@ -65,9 +65,9 @@ void tss_init() {
 
    /* TSS */
    memset(&tss, 0, sizeof(TSS));
-   tss.ist1 = (uint64_t)(alt_stack_df + ALT_STACK_WORDS - 1);
-   tss.ist2 = (uint64_t)(alt_stack_gp + ALT_STACK_WORDS - 1);
-   tss.ist3 = (uint64_t)(alt_stack_pf + ALT_STACK_WORDS - 1);
+   tss.ist[IST_DF - 1] = (uint64_t)(alt_stack_df + ALT_STACK_WORDS - 1);
+   tss.ist[IST_GP - 1] = (uint64_t)(alt_stack_gp + ALT_STACK_WORDS - 1);
+   tss.ist[IST_PF - 1] = (uint64_t)(alt_stack_pf + ALT_STACK_WORDS - 1);
    tss.iomap_base = sizeof(TSS) - 2;
 
    /* Enable */
@@ -98,9 +98,9 @@ void irq_init() {
    }
 
    /* Set IST entries for special stacks */
-   global_idt[EXC_DF].ist = 1;
-   global_idt[EXC_GP].ist = 2;
-   global_idt[EXC_PF].ist = 3;
+   global_idt[EXC_DF].ist = IST_DF;
+   global_idt[EXC_GP].ist = IST_GP;
+   global_idt[EXC_PF].ist = IST_PF;
 
    /* Disable all PIC interrupts */
    for (i = 0; i < 16; ++i) {

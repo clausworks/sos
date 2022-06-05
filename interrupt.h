@@ -58,6 +58,8 @@ typedef struct TSS {
    uint64_t rsp1;
    uint64_t rsp2;
    uint64_t reserved_1C;
+   uint64_t ist[7];
+   /*
    uint64_t ist1;
    uint64_t ist2;
    uint64_t ist3;
@@ -65,6 +67,7 @@ typedef struct TSS {
    uint64_t ist5;
    uint64_t ist6;
    uint64_t ist7;
+   */
    uint64_t reserved_5C;
    uint16_t reserved_64;
    uint16_t iomap_base;
@@ -76,12 +79,19 @@ typedef struct TSS {
 
 #define IDT_NUM_ENTRIES 256
 #define IDT_TYPE_INTGATE 0xE
+#define IDT_TYPE_TRAPGATE 0xF
 
 /* Exception vectors */
 #define EXC_DE 0
 #define EXC_DF 8
 #define EXC_GP 13
 #define EXC_PF 14
+
+/* IST Entries */
+#define IST_DF 1
+#define IST_GP 2
+#define IST_PF 3
+#define IST_SYSCALL 4
 
 /* Macros for osdev.org PIC remap function */
 #define ICW1_ICW4 0x01d
