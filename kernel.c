@@ -38,18 +38,22 @@ extern void kmain() {
    mmu_pt_init();
    kmalloc_init();
 
+   /*
+   syscall_init();
+   */
+
    /* Enable interrupts */
+   printk("almost done\n");
    STI;
 
    /*
    asm("int $0x21"::);
    */
 
+   printk("\ndone\n");
 
    _test_kmalloc_basic();
-   /*
    _test_kmalloc_multipage();
-   */
 
    while (1) {
       HLT;

@@ -1,5 +1,6 @@
 #include "kernel.h"
 #include "memory.h"
+#include "memalloc.h"
 #include "interrupt.h"
 #include "isr.h"
 #include "io.h"
@@ -13,6 +14,9 @@ TSS tss;
 uint64_t alt_stack_df[ALT_STACK_WORDS] = {0};
 uint64_t alt_stack_gp[ALT_STACK_WORDS] = {0};
 uint64_t alt_stack_pf[ALT_STACK_WORDS] = {0};
+uint64_t alt_stack_exit[ALT_STACK_WORDS] = {0};
+
+void *syscall_table[NUM_SYSCALLS];
 
 /* osdev.org PIC remap: https://wiki.osdev.org/PIC */
 void remap_pic(int offset1, int offset2) {
@@ -180,7 +184,7 @@ void pic_clrmask(uint8_t irq) {
 
 /* C interrupt handlers */
 
-void handle_asm_irq(int irq, int err) {
+void handle_asm_irq(int irq, int err, void *saved_context) {
    if (irq < 0 || irq >= IDT_NUM_ENTRIES) {
       printk("handle_asm_irq: invalid IRQ number (#%d)\n", irq);
    }
@@ -204,4 +208,26 @@ void irq_df(int irq, int err, void *arg) {
 void irq_gp(int irq, int err, void *arg) {
    printk("General protection fault (error 0x%x)\n", err);
    HLT;
+}
+
+/* System Calls */
+
+void syscall_init() {
+   /* Trap stack */
+   tss.ist[IST_EXIT - 1] = (uint64_t)(alt_stack_exit + ALT_STACK_WORDS - 1);
+   
+   /* IDT */
+   global_idt[TRAP_EXIT].ist = IST_EXIT;
+   global_idt[TRAP_EXIT].type = IDT_TYPE_TRAPGATE;
+
+   irq_set_handler(TRAP_SYSCALL, syscall_handler, NULL);
+}
+
+void register_syscall(int num, void *fn) {
+   syscall_table[num] = fn;
+}
+
+void syscall_handler(int irq, int err, void *arg) {
+   /* TODO: need call_num argument. */
+   /* Can't get this unless we don't pass the IRQ number */
 }

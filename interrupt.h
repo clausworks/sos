@@ -86,12 +86,20 @@ typedef struct TSS {
 #define EXC_DF 8
 #define EXC_GP 13
 #define EXC_PF 14
+#define TRAP_SYSCALL 0x80
+#define TRAP_EXIT 0x81
 
 /* IST Entries */
+#define IST_NUM_STACKS 4
 #define IST_DF 1
 #define IST_GP 2
 #define IST_PF 3
-#define IST_SYSCALL 4
+#define IST_EXIT 4
+
+/* System calls */
+#define NUM_SYSCALLS 16
+#define SYSCALL_YIELD 0
+/* Note: exit has its own interrupt number */
 
 /* Macros for osdev.org PIC remap function */
 #define ICW1_ICW4 0x01d
@@ -136,8 +144,12 @@ void irq_init(void);
 void pic_setmask(uint8_t irq);
 void pic_clrmask(uint8_t irq);
 void pic_eoi(uint8_t irq);
-void handle_asm_irq(int, int);
+void handle_asm_irq(int, int, void *);
 int interrupts_enabled(void);
+
+void syscall_init();
+void register_syscall(int, void *);
+void syscall_handler(int, int, void*);
 
 void irq_set_handler(int irq, irq_handler_t handler, void *arg);
 

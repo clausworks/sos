@@ -7,4 +7,7 @@
 
 #define HLT asm("hlt")
 
+#define QUOTE(s) str(s)
+#define str(s) #s
+
 #endif

@@ -17,4 +17,3 @@ long_mode_start:
 	; enter C code
 	call kmain
 	hlt
-
