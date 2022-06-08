@@ -189,13 +189,12 @@ void pic_clrmask(uint8_t irq) {
 
 void handle_asm_irq(int irq, int err, Context *saved_context) {
    if (cur_proc != NULL) {
-      printk("set cur_proc\n");
       memcpy(cur_proc, saved_context, sizeof(Context));
    }
-   printk("int %d\n", irq);
 
    if (irq < 0 || irq >= IDT_NUM_ENTRIES) {
       printk("handle_asm_irq: invalid IRQ number (#%d)\n", irq);
+      HLT;
    }
    if (c_idt[irq].handler == NULL) {
       printk("Unhandled interrupt: #%d. Halting CPU.\n", irq);
@@ -205,7 +204,6 @@ void handle_asm_irq(int irq, int err, Context *saved_context) {
    c_idt[irq].handler(irq, err, c_idt[irq].arg);
    
    if (cur_proc != NULL && next_proc != NULL && cur_proc != next_proc) {
-      printk("cur_proc = next_proc\n");
       memcpy(cur_proc, next_proc, sizeof(Context));
    }
 }
@@ -234,7 +232,7 @@ void syscall_init() {
    global_idt[TRAP_EXIT].ist = IST_EXIT;
    global_idt[TRAP_EXIT].type = IDT_TYPE_TRAPGATE;
 
-   irq_set_handler(TRAP_SYSCALL, syscall_handler, cur_proc);
+   irq_set_handler(TRAP_SYSCALL, syscall_handler, NULL);
    printk("syscall_init\n");
 }
 
@@ -243,9 +241,9 @@ void register_syscall(int num, void *fn) {
 }
 
 void syscall_handler(int irq, int err, void *arg) {
-   int call_num = ((Context *)arg)->r9;  /* r9 set by the system call stub */
+   int call_num = cur_proc->r9;  /* r9 set by the system call stub */
    /* TODO: figure out how to pass args */
    printk("about to jump\n");
-   asm ("call %0" :: "dN"(syscall_table[call_num]) :);
+   asm volatile ("call *%0" :: "dN"(syscall_table[call_num]) :);
    printk("back here!\n");
 }

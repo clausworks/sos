@@ -101,7 +101,7 @@ typedef struct {
 } __attribute__((packed)) Context;
 
 #define TSS_DESC_TYPE 9
-#define ALT_STACK_WORDS 1024
+#define ALT_STACK_WORDS 0x1000
 #define TSS_GDT_INDEX 2 
 
 #define IDT_NUM_ENTRIES 256
@@ -125,7 +125,7 @@ typedef struct {
 
 /* System calls */
 #define NUM_SYSCALLS 16
-#define SYSCALL_YIELD 0
+#define SYSCALL_YIELD 12345678
 /* Note: exit has its own interrupt number */
 
 /* Macros for osdev.org PIC remap function */

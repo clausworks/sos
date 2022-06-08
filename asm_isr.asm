@@ -264,24 +264,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -289,24 +289,24 @@ mov rdi, 0
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -323,24 +323,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -348,24 +348,24 @@ mov rdi, 1
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -382,24 +382,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -407,24 +407,24 @@ mov rdi, 2
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -441,24 +441,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -466,24 +466,24 @@ mov rdi, 3
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -500,24 +500,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -525,24 +525,24 @@ mov rdi, 4
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -559,24 +559,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -584,24 +584,24 @@ mov rdi, 5
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -618,24 +618,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -643,24 +643,24 @@ mov rdi, 6
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -677,24 +677,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -702,24 +702,24 @@ mov rdi, 7
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -743,24 +743,24 @@ mov [rsp + 8], rdi
 add rsp, 8
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -768,24 +768,24 @@ mov rdi, 8
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -802,24 +802,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -827,24 +827,24 @@ mov rdi, 9
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -868,24 +868,24 @@ mov [rsp + 8], rdi
 add rsp, 8
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -893,24 +893,24 @@ mov rdi, 10
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -934,24 +934,24 @@ mov [rsp + 8], rdi
 add rsp, 8
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -959,24 +959,24 @@ mov rdi, 11
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1000,24 +1000,24 @@ mov [rsp + 8], rdi
 add rsp, 8
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1025,24 +1025,24 @@ mov rdi, 12
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1066,24 +1066,24 @@ mov [rsp + 8], rdi
 add rsp, 8
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1091,24 +1091,24 @@ mov rdi, 13
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1132,24 +1132,24 @@ mov [rsp + 8], rdi
 add rsp, 8
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1157,24 +1157,24 @@ mov rdi, 14
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1191,24 +1191,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1216,24 +1216,24 @@ mov rdi, 15
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1250,24 +1250,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1275,24 +1275,24 @@ mov rdi, 16
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1316,24 +1316,24 @@ mov [rsp + 8], rdi
 add rsp, 8
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1341,24 +1341,24 @@ mov rdi, 17
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1375,24 +1375,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1400,24 +1400,24 @@ mov rdi, 18
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1434,24 +1434,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1459,24 +1459,24 @@ mov rdi, 19
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1493,24 +1493,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1518,24 +1518,24 @@ mov rdi, 20
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1552,24 +1552,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1577,24 +1577,24 @@ mov rdi, 21
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1611,24 +1611,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1636,24 +1636,24 @@ mov rdi, 22
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1670,24 +1670,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1695,24 +1695,24 @@ mov rdi, 23
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1729,24 +1729,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1754,24 +1754,24 @@ mov rdi, 24
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1788,24 +1788,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1813,24 +1813,24 @@ mov rdi, 25
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1847,24 +1847,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1872,24 +1872,24 @@ mov rdi, 26
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1906,24 +1906,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1931,24 +1931,24 @@ mov rdi, 27
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -1965,24 +1965,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -1990,24 +1990,24 @@ mov rdi, 28
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2024,24 +2024,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2049,24 +2049,24 @@ mov rdi, 29
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2083,24 +2083,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2108,24 +2108,24 @@ mov rdi, 30
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2142,24 +2142,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2167,24 +2167,24 @@ mov rdi, 31
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2201,24 +2201,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2226,24 +2226,24 @@ mov rdi, 32
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2260,24 +2260,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2285,24 +2285,24 @@ mov rdi, 33
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2319,24 +2319,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2344,24 +2344,24 @@ mov rdi, 34
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2378,24 +2378,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2403,24 +2403,24 @@ mov rdi, 35
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2437,24 +2437,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2462,24 +2462,24 @@ mov rdi, 36
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2496,24 +2496,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2521,24 +2521,24 @@ mov rdi, 37
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2555,24 +2555,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2580,24 +2580,24 @@ mov rdi, 38
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2614,24 +2614,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2639,24 +2639,24 @@ mov rdi, 39
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2673,24 +2673,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2698,24 +2698,24 @@ mov rdi, 40
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2732,24 +2732,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2757,24 +2757,24 @@ mov rdi, 41
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2791,24 +2791,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2816,24 +2816,24 @@ mov rdi, 42
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2850,24 +2850,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2875,24 +2875,24 @@ mov rdi, 43
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2909,24 +2909,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2934,24 +2934,24 @@ mov rdi, 44
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -2968,24 +2968,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -2993,24 +2993,24 @@ mov rdi, 45
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3027,24 +3027,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3052,24 +3052,24 @@ mov rdi, 46
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3086,24 +3086,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3111,24 +3111,24 @@ mov rdi, 47
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3145,24 +3145,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3170,24 +3170,24 @@ mov rdi, 48
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3204,24 +3204,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3229,24 +3229,24 @@ mov rdi, 49
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3263,24 +3263,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3288,24 +3288,24 @@ mov rdi, 50
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3322,24 +3322,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3347,24 +3347,24 @@ mov rdi, 51
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3381,24 +3381,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3406,24 +3406,24 @@ mov rdi, 52
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3440,24 +3440,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3465,24 +3465,24 @@ mov rdi, 53
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3499,24 +3499,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3524,24 +3524,24 @@ mov rdi, 54
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3558,24 +3558,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3583,24 +3583,24 @@ mov rdi, 55
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3617,24 +3617,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3642,24 +3642,24 @@ mov rdi, 56
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3676,24 +3676,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3701,24 +3701,24 @@ mov rdi, 57
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3735,24 +3735,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3760,24 +3760,24 @@ mov rdi, 58
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3794,24 +3794,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3819,24 +3819,24 @@ mov rdi, 59
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3853,24 +3853,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3878,24 +3878,24 @@ mov rdi, 60
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3912,24 +3912,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3937,24 +3937,24 @@ mov rdi, 61
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -3971,24 +3971,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -3996,24 +3996,24 @@ mov rdi, 62
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4030,24 +4030,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4055,24 +4055,24 @@ mov rdi, 63
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4089,24 +4089,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4114,24 +4114,24 @@ mov rdi, 64
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4148,24 +4148,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4173,24 +4173,24 @@ mov rdi, 65
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4207,24 +4207,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4232,24 +4232,24 @@ mov rdi, 66
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4266,24 +4266,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4291,24 +4291,24 @@ mov rdi, 67
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4325,24 +4325,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4350,24 +4350,24 @@ mov rdi, 68
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4384,24 +4384,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4409,24 +4409,24 @@ mov rdi, 69
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4443,24 +4443,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4468,24 +4468,24 @@ mov rdi, 70
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4502,24 +4502,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4527,24 +4527,24 @@ mov rdi, 71
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4561,24 +4561,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4586,24 +4586,24 @@ mov rdi, 72
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4620,24 +4620,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4645,24 +4645,24 @@ mov rdi, 73
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4679,24 +4679,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4704,24 +4704,24 @@ mov rdi, 74
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4738,24 +4738,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4763,24 +4763,24 @@ mov rdi, 75
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4797,24 +4797,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4822,24 +4822,24 @@ mov rdi, 76
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4856,24 +4856,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4881,24 +4881,24 @@ mov rdi, 77
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4915,24 +4915,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4940,24 +4940,24 @@ mov rdi, 78
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -4974,24 +4974,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -4999,24 +4999,24 @@ mov rdi, 79
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5033,24 +5033,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5058,24 +5058,24 @@ mov rdi, 80
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5092,24 +5092,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5117,24 +5117,24 @@ mov rdi, 81
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5151,24 +5151,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5176,24 +5176,24 @@ mov rdi, 82
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5210,24 +5210,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5235,24 +5235,24 @@ mov rdi, 83
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5269,24 +5269,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5294,24 +5294,24 @@ mov rdi, 84
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5328,24 +5328,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5353,24 +5353,24 @@ mov rdi, 85
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5387,24 +5387,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5412,24 +5412,24 @@ mov rdi, 86
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5446,24 +5446,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5471,24 +5471,24 @@ mov rdi, 87
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5505,24 +5505,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5530,24 +5530,24 @@ mov rdi, 88
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5564,24 +5564,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5589,24 +5589,24 @@ mov rdi, 89
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5623,24 +5623,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5648,24 +5648,24 @@ mov rdi, 90
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5682,24 +5682,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5707,24 +5707,24 @@ mov rdi, 91
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5741,24 +5741,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5766,24 +5766,24 @@ mov rdi, 92
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5800,24 +5800,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5825,24 +5825,24 @@ mov rdi, 93
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5859,24 +5859,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5884,24 +5884,24 @@ mov rdi, 94
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5918,24 +5918,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -5943,24 +5943,24 @@ mov rdi, 95
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -5977,24 +5977,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6002,24 +6002,24 @@ mov rdi, 96
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6036,24 +6036,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6061,24 +6061,24 @@ mov rdi, 97
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6095,24 +6095,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6120,24 +6120,24 @@ mov rdi, 98
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6154,24 +6154,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6179,24 +6179,24 @@ mov rdi, 99
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6213,24 +6213,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6238,24 +6238,24 @@ mov rdi, 100
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6272,24 +6272,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6297,24 +6297,24 @@ mov rdi, 101
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6331,24 +6331,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6356,24 +6356,24 @@ mov rdi, 102
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6390,24 +6390,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6415,24 +6415,24 @@ mov rdi, 103
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6449,24 +6449,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6474,24 +6474,24 @@ mov rdi, 104
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6508,24 +6508,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6533,24 +6533,24 @@ mov rdi, 105
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6567,24 +6567,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6592,24 +6592,24 @@ mov rdi, 106
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6626,24 +6626,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6651,24 +6651,24 @@ mov rdi, 107
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6685,24 +6685,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6710,24 +6710,24 @@ mov rdi, 108
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6744,24 +6744,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6769,24 +6769,24 @@ mov rdi, 109
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6803,24 +6803,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6828,24 +6828,24 @@ mov rdi, 110
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6862,24 +6862,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6887,24 +6887,24 @@ mov rdi, 111
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6921,24 +6921,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -6946,24 +6946,24 @@ mov rdi, 112
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -6980,24 +6980,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7005,24 +7005,24 @@ mov rdi, 113
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7039,24 +7039,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7064,24 +7064,24 @@ mov rdi, 114
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7098,24 +7098,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7123,24 +7123,24 @@ mov rdi, 115
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7157,24 +7157,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7182,24 +7182,24 @@ mov rdi, 116
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7216,24 +7216,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7241,24 +7241,24 @@ mov rdi, 117
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7275,24 +7275,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7300,24 +7300,24 @@ mov rdi, 118
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7334,24 +7334,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7359,24 +7359,24 @@ mov rdi, 119
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7393,24 +7393,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7418,24 +7418,24 @@ mov rdi, 120
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7452,24 +7452,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7477,24 +7477,24 @@ mov rdi, 121
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7511,24 +7511,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7536,24 +7536,24 @@ mov rdi, 122
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7570,24 +7570,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7595,24 +7595,24 @@ mov rdi, 123
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7629,24 +7629,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7654,24 +7654,24 @@ mov rdi, 124
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7688,24 +7688,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7713,24 +7713,24 @@ mov rdi, 125
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7747,24 +7747,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7772,24 +7772,24 @@ mov rdi, 126
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7806,24 +7806,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7831,24 +7831,24 @@ mov rdi, 127
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7865,24 +7865,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7890,24 +7890,24 @@ mov rdi, 128
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7924,24 +7924,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -7949,24 +7949,24 @@ mov rdi, 129
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -7983,24 +7983,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8008,24 +8008,24 @@ mov rdi, 130
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8042,24 +8042,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8067,24 +8067,24 @@ mov rdi, 131
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8101,24 +8101,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8126,24 +8126,24 @@ mov rdi, 132
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8160,24 +8160,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8185,24 +8185,24 @@ mov rdi, 133
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8219,24 +8219,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8244,24 +8244,24 @@ mov rdi, 134
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8278,24 +8278,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8303,24 +8303,24 @@ mov rdi, 135
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8337,24 +8337,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8362,24 +8362,24 @@ mov rdi, 136
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8396,24 +8396,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8421,24 +8421,24 @@ mov rdi, 137
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8455,24 +8455,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8480,24 +8480,24 @@ mov rdi, 138
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8514,24 +8514,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8539,24 +8539,24 @@ mov rdi, 139
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8573,24 +8573,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8598,24 +8598,24 @@ mov rdi, 140
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8632,24 +8632,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8657,24 +8657,24 @@ mov rdi, 141
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8691,24 +8691,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8716,24 +8716,24 @@ mov rdi, 142
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8750,24 +8750,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8775,24 +8775,24 @@ mov rdi, 143
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8809,24 +8809,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8834,24 +8834,24 @@ mov rdi, 144
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8868,24 +8868,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8893,24 +8893,24 @@ mov rdi, 145
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8927,24 +8927,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -8952,24 +8952,24 @@ mov rdi, 146
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -8986,24 +8986,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9011,24 +9011,24 @@ mov rdi, 147
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9045,24 +9045,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9070,24 +9070,24 @@ mov rdi, 148
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9104,24 +9104,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9129,24 +9129,24 @@ mov rdi, 149
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9163,24 +9163,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9188,24 +9188,24 @@ mov rdi, 150
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9222,24 +9222,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9247,24 +9247,24 @@ mov rdi, 151
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9281,24 +9281,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9306,24 +9306,24 @@ mov rdi, 152
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9340,24 +9340,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9365,24 +9365,24 @@ mov rdi, 153
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9399,24 +9399,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9424,24 +9424,24 @@ mov rdi, 154
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9458,24 +9458,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9483,24 +9483,24 @@ mov rdi, 155
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9517,24 +9517,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9542,24 +9542,24 @@ mov rdi, 156
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9576,24 +9576,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9601,24 +9601,24 @@ mov rdi, 157
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9635,24 +9635,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9660,24 +9660,24 @@ mov rdi, 158
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9694,24 +9694,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9719,24 +9719,24 @@ mov rdi, 159
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9753,24 +9753,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9778,24 +9778,24 @@ mov rdi, 160
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9812,24 +9812,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9837,24 +9837,24 @@ mov rdi, 161
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9871,24 +9871,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9896,24 +9896,24 @@ mov rdi, 162
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9930,24 +9930,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -9955,24 +9955,24 @@ mov rdi, 163
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -9989,24 +9989,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10014,24 +10014,24 @@ mov rdi, 164
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10048,24 +10048,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10073,24 +10073,24 @@ mov rdi, 165
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10107,24 +10107,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10132,24 +10132,24 @@ mov rdi, 166
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10166,24 +10166,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10191,24 +10191,24 @@ mov rdi, 167
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10225,24 +10225,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10250,24 +10250,24 @@ mov rdi, 168
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10284,24 +10284,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10309,24 +10309,24 @@ mov rdi, 169
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10343,24 +10343,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10368,24 +10368,24 @@ mov rdi, 170
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10402,24 +10402,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10427,24 +10427,24 @@ mov rdi, 171
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10461,24 +10461,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10486,24 +10486,24 @@ mov rdi, 172
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10520,24 +10520,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10545,24 +10545,24 @@ mov rdi, 173
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10579,24 +10579,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10604,24 +10604,24 @@ mov rdi, 174
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10638,24 +10638,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10663,24 +10663,24 @@ mov rdi, 175
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10697,24 +10697,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10722,24 +10722,24 @@ mov rdi, 176
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10756,24 +10756,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10781,24 +10781,24 @@ mov rdi, 177
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10815,24 +10815,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10840,24 +10840,24 @@ mov rdi, 178
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10874,24 +10874,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10899,24 +10899,24 @@ mov rdi, 179
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10933,24 +10933,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -10958,24 +10958,24 @@ mov rdi, 180
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -10992,24 +10992,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11017,24 +11017,24 @@ mov rdi, 181
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11051,24 +11051,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11076,24 +11076,24 @@ mov rdi, 182
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11110,24 +11110,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11135,24 +11135,24 @@ mov rdi, 183
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11169,24 +11169,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11194,24 +11194,24 @@ mov rdi, 184
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11228,24 +11228,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11253,24 +11253,24 @@ mov rdi, 185
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11287,24 +11287,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11312,24 +11312,24 @@ mov rdi, 186
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11346,24 +11346,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11371,24 +11371,24 @@ mov rdi, 187
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11405,24 +11405,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11430,24 +11430,24 @@ mov rdi, 188
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11464,24 +11464,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11489,24 +11489,24 @@ mov rdi, 189
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11523,24 +11523,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11548,24 +11548,24 @@ mov rdi, 190
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11582,24 +11582,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11607,24 +11607,24 @@ mov rdi, 191
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11641,24 +11641,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11666,24 +11666,24 @@ mov rdi, 192
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11700,24 +11700,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11725,24 +11725,24 @@ mov rdi, 193
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11759,24 +11759,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11784,24 +11784,24 @@ mov rdi, 194
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11818,24 +11818,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11843,24 +11843,24 @@ mov rdi, 195
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11877,24 +11877,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11902,24 +11902,24 @@ mov rdi, 196
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11936,24 +11936,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -11961,24 +11961,24 @@ mov rdi, 197
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -11995,24 +11995,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12020,24 +12020,24 @@ mov rdi, 198
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12054,24 +12054,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12079,24 +12079,24 @@ mov rdi, 199
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12113,24 +12113,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12138,24 +12138,24 @@ mov rdi, 200
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12172,24 +12172,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12197,24 +12197,24 @@ mov rdi, 201
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12231,24 +12231,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12256,24 +12256,24 @@ mov rdi, 202
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12290,24 +12290,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12315,24 +12315,24 @@ mov rdi, 203
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12349,24 +12349,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12374,24 +12374,24 @@ mov rdi, 204
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12408,24 +12408,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12433,24 +12433,24 @@ mov rdi, 205
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12467,24 +12467,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12492,24 +12492,24 @@ mov rdi, 206
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12526,24 +12526,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12551,24 +12551,24 @@ mov rdi, 207
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12585,24 +12585,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12610,24 +12610,24 @@ mov rdi, 208
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12644,24 +12644,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12669,24 +12669,24 @@ mov rdi, 209
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12703,24 +12703,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12728,24 +12728,24 @@ mov rdi, 210
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12762,24 +12762,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12787,24 +12787,24 @@ mov rdi, 211
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12821,24 +12821,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12846,24 +12846,24 @@ mov rdi, 212
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12880,24 +12880,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12905,24 +12905,24 @@ mov rdi, 213
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12939,24 +12939,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -12964,24 +12964,24 @@ mov rdi, 214
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -12998,24 +12998,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13023,24 +13023,24 @@ mov rdi, 215
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13057,24 +13057,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13082,24 +13082,24 @@ mov rdi, 216
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13116,24 +13116,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13141,24 +13141,24 @@ mov rdi, 217
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13175,24 +13175,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13200,24 +13200,24 @@ mov rdi, 218
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13234,24 +13234,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13259,24 +13259,24 @@ mov rdi, 219
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13293,24 +13293,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13318,24 +13318,24 @@ mov rdi, 220
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13352,24 +13352,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13377,24 +13377,24 @@ mov rdi, 221
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13411,24 +13411,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13436,24 +13436,24 @@ mov rdi, 222
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13470,24 +13470,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13495,24 +13495,24 @@ mov rdi, 223
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13529,24 +13529,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13554,24 +13554,24 @@ mov rdi, 224
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13588,24 +13588,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13613,24 +13613,24 @@ mov rdi, 225
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13647,24 +13647,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13672,24 +13672,24 @@ mov rdi, 226
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13706,24 +13706,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13731,24 +13731,24 @@ mov rdi, 227
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13765,24 +13765,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13790,24 +13790,24 @@ mov rdi, 228
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13824,24 +13824,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13849,24 +13849,24 @@ mov rdi, 229
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13883,24 +13883,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13908,24 +13908,24 @@ mov rdi, 230
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -13942,24 +13942,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -13967,24 +13967,24 @@ mov rdi, 231
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14001,24 +14001,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14026,24 +14026,24 @@ mov rdi, 232
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14060,24 +14060,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14085,24 +14085,24 @@ mov rdi, 233
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14119,24 +14119,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14144,24 +14144,24 @@ mov rdi, 234
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14178,24 +14178,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14203,24 +14203,24 @@ mov rdi, 235
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14237,24 +14237,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14262,24 +14262,24 @@ mov rdi, 236
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14296,24 +14296,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14321,24 +14321,24 @@ mov rdi, 237
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14355,24 +14355,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14380,24 +14380,24 @@ mov rdi, 238
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14414,24 +14414,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14439,24 +14439,24 @@ mov rdi, 239
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14473,24 +14473,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14498,24 +14498,24 @@ mov rdi, 240
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14532,24 +14532,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14557,24 +14557,24 @@ mov rdi, 241
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14591,24 +14591,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14616,24 +14616,24 @@ mov rdi, 242
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14650,24 +14650,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14675,24 +14675,24 @@ mov rdi, 243
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14709,24 +14709,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14734,24 +14734,24 @@ mov rdi, 244
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14768,24 +14768,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14793,24 +14793,24 @@ mov rdi, 245
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14827,24 +14827,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14852,24 +14852,24 @@ mov rdi, 246
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14886,24 +14886,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14911,24 +14911,24 @@ mov rdi, 247
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -14945,24 +14945,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -14970,24 +14970,24 @@ mov rdi, 248
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -15004,24 +15004,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -15029,24 +15029,24 @@ mov rdi, 249
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -15063,24 +15063,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -15088,24 +15088,24 @@ mov rdi, 250
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -15122,24 +15122,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -15147,24 +15147,24 @@ mov rdi, 251
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -15181,24 +15181,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -15206,24 +15206,24 @@ mov rdi, 252
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -15240,24 +15240,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -15265,24 +15265,24 @@ mov rdi, 253
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -15299,24 +15299,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -15324,24 +15324,24 @@ mov rdi, 254
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi
@@ -15358,24 +15358,24 @@ push rsi
 
 
 push rax
-;push rbx
+push rbx
 push rcx
 push rdx
 push r8
 push r9
 push r10
 push r11
-;push r12
-;push r13
-;push r14
-;push r15
-;mov rax, ds
-;push rax
-;mov rax, es
-;push rax
-;push fs
-;push gs
-;push rbp
+push r12
+push r13
+push r14
+push r15
+mov rax, ds
+push rax
+mov rax, es
+push rax
+push fs
+push gs
+push rbp
 ; base of context struct
 mov rdx, rsp
 ; load ISR number
@@ -15383,24 +15383,24 @@ mov rdi, 255
 ; call C handler
 call handle_asm_irq
 ; pop registers
-;pop rbp
-;pop gs
-;pop fs
-;pop rax
-;mov es, rax
-;pop rax
-;mov ds, rax
-;pop r15
-;pop r14
-;pop r13
-;pop r12
+pop rbp
+pop gs
+pop fs
+pop rax
+mov es, rax
+pop rax
+mov ds, rax
+pop r15
+pop r14
+pop r13
+pop r12
 pop r11
 pop r10
 pop r9
 pop r8
 pop rdx
 pop rcx
-;pop rbx
+pop rbx
 pop rax
 pop rsi
 pop rdi

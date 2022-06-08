@@ -38,22 +38,14 @@ extern void kmain() {
    mmu_pf_alloc_init();
    mmu_pt_init();
    kmalloc_init();
-   /*
    syscall_init();
    proc_init();
-   */
-
-   /*
-   syscall_init();
-   */
 
    /* Enable interrupts */
    STI;
-   /*
-   printk("done\n");
 
    yield();
-   */
+   kexit();
 
    /*
    asm("int $0x21"::);
