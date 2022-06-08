@@ -23,12 +23,22 @@ with open('asm_isr.asm', 'w') as isrfile:
       print()
       print(f'''isr{x}:
 ; push registers
+push rdi
+push rsi
+''');
+      if x in errcode_irq_nums:
+         print('''; save & remove error code from stack
+mov rsi, [rsp + 16]
+mov rdi, [rsp + 8]
+mov [rsp + 16], rdi
+mov rdi, [rsp]
+mov [rsp + 8], rdi
+add rsp, 8''')
+      print(f'''
 push rax
 push rbx
 push rcx
 push rdx
-push rdi
-push rsi
 push r8
 push r9
 push r10
@@ -45,16 +55,7 @@ push fs
 push gs
 push rbp
 ; base of context struct
-mov rdx, rsp''');
-      if x in errcode_irq_nums:
-         print('''; save & remove error code from stack
-mov rsi, [rsp + 16]
-mov rdi, [rsp + 8]
-mov [rsp + 16], rdi
-mov rdi, [rsp]
-mov [rsp + 8], rdi
-add rsp, 8''')
-      print(f'''
+mov rdx, rsp
 ; load ISR number
 mov rdi, {x}
 ; call C handler
@@ -75,12 +76,12 @@ pop r11
 pop r10
 pop r9
 pop r8
-pop rsi
-pop rdi
 pop rdx
 pop rcx
 pop rbx
 pop rax
+pop rsi
+pop rdi
 ; exit ISR
 iretq''')
       print('\n\n')
@@ -106,9 +107,6 @@ with open('isr.h', 'w') as isrfile:
    print('\n#endif')
 
 sys.stdout = orig_stdout
-
-
-
 
 
 

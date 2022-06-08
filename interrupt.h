@@ -73,6 +73,33 @@ typedef struct TSS {
    uint16_t iomap_base;
 } __attribute__((packed)) TSS;
 
+typedef struct {
+   uint64_t rbp;
+   uint64_t gs;
+   uint64_t fs;
+   uint64_t es;
+   uint64_t ds;
+   uint64_t r15;
+   uint64_t r14;
+   uint64_t r13;
+   uint64_t r12;
+   uint64_t r11;
+   uint64_t r10;
+   uint64_t r9;
+   uint64_t r8;
+   uint64_t rdx;
+   uint64_t rcx;
+   uint64_t rbx;
+   uint64_t rax;
+   uint64_t rsi;
+   uint64_t rdi;
+   uint64_t rip;
+   uint64_t cs;
+   uint64_t rflags;
+   uint64_t rsp;
+   uint64_t ss;
+} __attribute__((packed)) Context;
+
 #define TSS_DESC_TYPE 9
 #define ALT_STACK_WORDS 1024
 #define TSS_GDT_INDEX 2 
@@ -144,12 +171,12 @@ void irq_init(void);
 void pic_setmask(uint8_t irq);
 void pic_clrmask(uint8_t irq);
 void pic_eoi(uint8_t irq);
-void handle_asm_irq(int, int, void *);
+void handle_asm_irq(int, int, Context *);
 int interrupts_enabled(void);
 
 void syscall_init();
 void register_syscall(int, void *);
-void syscall_handler(int, int, void*);
+void syscall_handler(int, int, void *);
 
 void irq_set_handler(int irq, irq_handler_t handler, void *arg);
 
@@ -161,5 +188,8 @@ void irq_kb(int, int, void *);
 
 /* GDT */
 extern uint64_t gdt64;
+
+/* Saved contexts for common interrupt handler */
+extern Context *cur_proc, *next_proc;
 
 #endif

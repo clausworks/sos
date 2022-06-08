@@ -5,6 +5,7 @@
 #include "io.h"
 #include "memalloc.h"
 #include "kmalloc.h"
+#include "proc.h"
 
 void init_msg() {
    vga_clear();
@@ -19,10 +20,10 @@ void init_msg() {
 }
 
 extern void kmain() {
-   /*
+   
    int _cont = 0;
    while (!_cont);
-   */
+   
    
    CLI;
    
@@ -37,23 +38,32 @@ extern void kmain() {
    mmu_pf_alloc_init();
    mmu_pt_init();
    kmalloc_init();
+   /*
+   syscall_init();
+   proc_init();
+   */
 
    /*
    syscall_init();
    */
 
    /* Enable interrupts */
-   printk("almost done\n");
    STI;
+   /*
+   printk("done\n");
+
+   yield();
+   */
 
    /*
    asm("int $0x21"::);
    */
 
-   printk("\ndone\n");
 
+   /*
    _test_kmalloc_basic();
    _test_kmalloc_multipage();
+   */
 
    while (1) {
       HLT;

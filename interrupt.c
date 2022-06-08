@@ -18,6 +18,9 @@ uint64_t alt_stack_exit[ALT_STACK_WORDS] = {0};
 
 void *syscall_table[NUM_SYSCALLS];
 
+Context *cur_proc = 0;
+Context *next_proc = 0;
+
 /* osdev.org PIC remap: https://wiki.osdev.org/PIC */
 void remap_pic(int offset1, int offset2) {
    unsigned char a1, a2;
@@ -184,7 +187,13 @@ void pic_clrmask(uint8_t irq) {
 
 /* C interrupt handlers */
 
-void handle_asm_irq(int irq, int err, void *saved_context) {
+void handle_asm_irq(int irq, int err, Context *saved_context) {
+   if (cur_proc != NULL) {
+      printk("set cur_proc\n");
+      memcpy(cur_proc, saved_context, sizeof(Context));
+   }
+   printk("int %d\n", irq);
+
    if (irq < 0 || irq >= IDT_NUM_ENTRIES) {
       printk("handle_asm_irq: invalid IRQ number (#%d)\n", irq);
    }
@@ -194,6 +203,11 @@ void handle_asm_irq(int irq, int err, void *saved_context) {
    }
 
    c_idt[irq].handler(irq, err, c_idt[irq].arg);
+   
+   if (cur_proc != NULL && next_proc != NULL && cur_proc != next_proc) {
+      printk("cur_proc = next_proc\n");
+      memcpy(cur_proc, next_proc, sizeof(Context));
+   }
 }
 
 void irq_de(int irq, int err, void *arg) {
@@ -220,7 +234,8 @@ void syscall_init() {
    global_idt[TRAP_EXIT].ist = IST_EXIT;
    global_idt[TRAP_EXIT].type = IDT_TYPE_TRAPGATE;
 
-   irq_set_handler(TRAP_SYSCALL, syscall_handler, NULL);
+   irq_set_handler(TRAP_SYSCALL, syscall_handler, cur_proc);
+   printk("syscall_init\n");
 }
 
 void register_syscall(int num, void *fn) {
@@ -228,6 +243,9 @@ void register_syscall(int num, void *fn) {
 }
 
 void syscall_handler(int irq, int err, void *arg) {
-   /* TODO: need call_num argument. */
-   /* Can't get this unless we don't pass the IRQ number */
+   int call_num = ((Context *)arg)->r9;  /* r9 set by the system call stub */
+   /* TODO: figure out how to pass args */
+   printk("about to jump\n");
+   asm ("call %0" :: "dN"(syscall_table[call_num]) :);
+   printk("back here!\n");
 }
