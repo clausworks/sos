@@ -2,6 +2,7 @@
 #define INTERRUPTH
 
 #include <stdint-gcc.h>
+#include "proc.h"
 
 typedef void (*irq_handler_t)(int, int, void *);
 
@@ -59,46 +60,11 @@ typedef struct TSS {
    uint64_t rsp2;
    uint64_t reserved_1C;
    uint64_t ist[7];
-   /*
-   uint64_t ist1;
-   uint64_t ist2;
-   uint64_t ist3;
-   uint64_t ist4;
-   uint64_t ist5;
-   uint64_t ist6;
-   uint64_t ist7;
-   */
    uint64_t reserved_5C;
    uint16_t reserved_64;
    uint16_t iomap_base;
 } __attribute__((packed)) TSS;
 
-typedef struct {
-   uint64_t rbp;
-   uint64_t gs;
-   uint64_t fs;
-   uint64_t es;
-   uint64_t ds;
-   uint64_t r15;
-   uint64_t r14;
-   uint64_t r13;
-   uint64_t r12;
-   uint64_t r11;
-   uint64_t r10;
-   uint64_t r9;
-   uint64_t r8;
-   uint64_t rdx;
-   uint64_t rcx;
-   uint64_t rbx;
-   uint64_t rax;
-   uint64_t rsi;
-   uint64_t rdi;
-   uint64_t rip;
-   uint64_t cs;
-   uint64_t rflags;
-   uint64_t rsp;
-   uint64_t ss;
-} __attribute__((packed)) Context;
 
 #define TSS_DESC_TYPE 9
 #define ALT_STACK_WORDS 0x1000
@@ -125,7 +91,7 @@ typedef struct {
 
 /* System calls */
 #define NUM_SYSCALLS 16
-#define SYSCALL_YIELD 12345678
+#define SYSCALL_YIELD 0
 /* Note: exit has its own interrupt number */
 
 /* Macros for osdev.org PIC remap function */
@@ -188,8 +154,5 @@ void irq_kb(int, int, void *);
 
 /* GDT */
 extern uint64_t gdt64;
-
-/* Saved contexts for common interrupt handler */
-extern Context *cur_proc, *next_proc;
 
 #endif

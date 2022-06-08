@@ -5,6 +5,7 @@
 #include "isr.h"
 #include "io.h"
 #include "ps2.h"
+#include "proc.h"
 #include <stdint-gcc.h>
 
 IDTEntry global_idt[IDT_NUM_ENTRIES];
@@ -18,8 +19,6 @@ uint64_t alt_stack_exit[ALT_STACK_WORDS] = {0};
 
 void *syscall_table[NUM_SYSCALLS];
 
-Context *cur_proc = 0;
-Context *next_proc = 0;
 
 /* osdev.org PIC remap: https://wiki.osdev.org/PIC */
 void remap_pic(int offset1, int offset2) {
@@ -189,7 +188,7 @@ void pic_clrmask(uint8_t irq) {
 
 void handle_asm_irq(int irq, int err, Context *saved_context) {
    if (cur_proc != NULL) {
-      memcpy(cur_proc, saved_context, sizeof(Context));
+      memcpy(&cur_proc->regs, saved_context, sizeof(Context));
    }
 
    if (irq < 0 || irq >= IDT_NUM_ENTRIES) {
@@ -204,7 +203,7 @@ void handle_asm_irq(int irq, int err, Context *saved_context) {
    c_idt[irq].handler(irq, err, c_idt[irq].arg);
    
    if (cur_proc != NULL && next_proc != NULL && cur_proc != next_proc) {
-      memcpy(cur_proc, next_proc, sizeof(Context));
+      memcpy(&cur_proc->regs, &next_proc->regs, sizeof(Context));
    }
 }
 
@@ -241,7 +240,7 @@ void register_syscall(int num, void *fn) {
 }
 
 void syscall_handler(int irq, int err, void *arg) {
-   int call_num = cur_proc->r9;  /* r9 set by the system call stub */
+   int call_num = cur_proc->regs.r9;  /* r9 set by the system call stub */
    /* TODO: figure out how to pass args */
    printk("about to jump\n");
    asm volatile ("call *%0" :: "dN"(syscall_table[call_num]) :);

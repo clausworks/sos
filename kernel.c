@@ -20,10 +20,10 @@ void init_msg() {
 }
 
 extern void kmain() {
-   
+   /*
    int _cont = 0;
    while (!_cont);
-   
+   */
    
    CLI;
    
