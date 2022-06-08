@@ -4,6 +4,7 @@
 #include "memalloc.h"
 #include "io.h"
 #include "interrupt.h"
+#include "memory.h"
 
 const uint64_t km_block_sizes[KM_NUM_SIZES] = {32, 64, 128, 256, 512, 1024, 2048};
 KMPool pools[KM_NUM_SIZES] = {0};
@@ -159,19 +160,23 @@ void _test_kmalloc_basic() {
 
    /* list head manipulation */
    p[0] = kmalloc(10);
+   memset(p[0], 1, 10);
    kfree(p[0]);
    p[1] = kmalloc(10);
+   memset(p[1], 1, 10);
    kfree(p[1]);
    printk("p1 (%p) == p2 (%p)  [%d]\n", p[0], p[1], p[1] == p[0]);
 
    /* allocating multiple nodes */
    for (i = 0; i < 5; ++i) {
       p[i] = kmalloc(10);
+      memset(p[i], 1, 10);
    }
    for (i = 0; i < 5; ++i) {
       kfree(p[i]);
    }
    addr = kmalloc(10);
+   memset(addr, 1, 10);
    printk("equality check: %s\n", (addr == p[4]) ? "pass" : "fail");
    kfree(addr);
 
@@ -179,6 +184,7 @@ void _test_kmalloc_basic() {
    printk("\nall sizes\n");
    for (i = 0; i < KM_NUM_SIZES; ++i) {
       p[i] = kmalloc(km_block_sizes[i] - sizeof(KMHeader));
+      memset(p[i], i, km_block_sizes[i] - sizeof(KMHeader));
       kfree(p[i]);
    }
 
@@ -187,6 +193,7 @@ void _test_kmalloc_basic() {
    km_pool_stats(&pools[KM_NUM_SIZES - 1]);
    for (i = 0; i < KM_NUM_SIZES; ++i) {
       p[i] = kmalloc(2000);
+      memset(p[i], 1, 2000);
    }
    for (i = 0; i < KM_NUM_SIZES; ++i) {
       kfree(p[i]);
@@ -197,10 +204,15 @@ void _test_kmalloc_basic() {
 void _test_kmalloc_multipage() {
    void *p[10];
    p[0] = kmalloc(2048 - 16);
+   memset(p[0], 1, 2048 - 16);
    p[1] = kmalloc(2048 - 16 + 1);
+   memset(p[1], 1, 2048 - 16 + 1);
    p[2] = kmalloc(4096); /* 2 pages */
+   memset(p[2], 1, 4096);
    p[3] = kmalloc(0x2000 - 0x10); /* 2 pages */
+   memset(p[3], 1, 0x2000 - 0x10);
    p[4] = kmalloc(0x2000 - 0xF); /* 3 pages */
+   memset(p[4], 1, 0x2000 - 0xF);
 
    kfree(p[4]);
    kfree(p[3]);
