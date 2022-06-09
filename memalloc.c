@@ -196,7 +196,7 @@ static inline PTE *get_pt_cr3() {
 }
 
 static inline void set_pt_cr3(void *page_table) {
-   asm volatile ("mov %0, %%cr3" :: "dN"(page_table) :);
+   asm volatile ("mov %0, %%cr3" :: "r"(page_table) :);
 }
 
 static inline void *get_addr_cr2() {

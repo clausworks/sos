@@ -34,8 +34,7 @@ void entrypoint_wrapper(kproc_t entrypoint, void *arg) {
 }
 
 void yield() {
-   uint64_t call_num = SYSCALL_YIELD;
-   asm volatile ("mov %0, %%r9" :: "dN"(call_num) :);
+   asm volatile ("mov %0, %%r9" :: "i"(SYSCALL_YIELD) :);
    asm volatile ("int $0x80");
 }
 

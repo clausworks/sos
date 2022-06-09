@@ -243,5 +243,5 @@ void register_syscall(int num, void *fn) {
 void syscall_handler(int irq, int err, void *arg) {
    int call_num = cur_proc->regs.r9;  /* r9 set by the system call stub */
    /* TODO: figure out how to pass args */
-   asm volatile ("call *%0" :: "dN"(syscall_table[call_num]) :);
+   asm volatile ("call *%0" :: "r"(syscall_table[call_num]) :);
 }
