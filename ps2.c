@@ -7,10 +7,10 @@
 ScanMapping scmap[0xFF];
 ScanMapping scmap_ext[0xFF];
 
-void ps2_send_cmd(uint8_t cmd) {
+void ps2_cmd(uint8_t cmd) {
    uint8_t status = inb(PS2_STATUS_PORT);
 #ifdef DEBUG
-   printk("ps2_send_cmd: %hx...", cmd);
+   printk("ps2_cmd: %hx...", cmd);
 #endif
    
    while (PS2_STATUS_INPUT & status) {
@@ -23,11 +23,11 @@ void ps2_send_cmd(uint8_t cmd) {
 #endif
 }
 
-uint8_t ps2_read_data() {
+uint8_t ps2_read_poll() {
    uint8_t data;
    uint8_t status = inb(PS2_STATUS_PORT);
 #ifdef DEBUG
-   printk("ps2_read_data...");
+   printk("ps2_read_poll...");
 #endif
    
    while (!(PS2_STATUS_OUTPUT & status)) {
@@ -40,10 +40,25 @@ uint8_t ps2_read_data() {
    return data;
 }
 
-void ps2_write_data(uint8_t data) {
+int ps2_read() {
+   uint8_t data;
+   uint8_t status = inb(PS2_STATUS_PORT);
+   
+   if (PS2_STATUS_OUTPUT & status) {
+      data = inb(PS2_DATA_PORT);
+   }
+   else {
+      //printk("ps2_read: data not available\n");
+      return -1;
+   }
+   
+   return data;
+}
+
+void ps2_write_poll(uint8_t data) {
    uint8_t status = inb(PS2_STATUS_PORT);
 #ifdef DEBUG
-   printk("ps2_write_data: %hx...", data);
+   printk("ps2_write_poll: %hx...", data);
 #endif
 
    while (PS2_STATUS_INPUT & status) {
@@ -59,15 +74,15 @@ void ps2_init() {
    uint8_t response, config;
 
    /* Disable ports */
-   ps2_send_cmd(PS2CMD_DISABLEP1);
-   ps2_send_cmd(PS2CMD_DISABLEP2);
+   ps2_cmd(PS2CMD_DISABLEP1);
+   ps2_cmd(PS2CMD_DISABLEP2);
 
    /* Flush output buffer */
    inb(PS2_DATA_PORT);
 
    /* Modify config byte */
-   ps2_send_cmd(PS2CMD_GETCONFIG);
-   config = ps2_read_data();
+   ps2_cmd(PS2CMD_GETCONFIG);
+   config = ps2_read_poll();
 
    /* Disable all interrupts and clocks */
    config &= ~(PS2_CONFIG_P1INTEN);
@@ -76,12 +91,12 @@ void ps2_init() {
    config &= ~(PS2_CONFIG_P1CLK);
    config &= ~(PS2_CONFIG_P2CLK);
 
-   ps2_send_cmd(PS2CMD_SETCONFIG);
-   ps2_write_data(config);
+   ps2_cmd(PS2CMD_SETCONFIG);
+   ps2_write_poll(config);
 
    /* Self test */
-   ps2_send_cmd(PS2CMD_SELFTEST);
-   if ((response = ps2_read_data()) == PS2RSP_ST_PASS) {
+   ps2_cmd(PS2CMD_SELFTEST);
+   if ((response = ps2_read_poll()) == PS2RSP_ST_PASS) {
       printk("passed self-test\n");
    }
    else if (response == PS2RSP_ST_FAIL) {
@@ -92,8 +107,8 @@ void ps2_init() {
    }
 
    /* Test ports individually */
-   ps2_send_cmd(PS2CMD_TESTP1);
-   response = ps2_read_data();
+   ps2_cmd(PS2CMD_TESTP1);
+   response = ps2_read_poll();
    if (response == PS2RSP_TESTP1_PASS) {
       printk("PS/2 Port 1 OK\n");
    }
@@ -102,17 +117,17 @@ void ps2_init() {
    }
 
    /* Config: enable port 1 clock and interrupts */
-   ps2_send_cmd(PS2CMD_GETCONFIG);
-   config = ps2_read_data();
+   ps2_cmd(PS2CMD_GETCONFIG);
+   config = ps2_read_poll();
 
    config |= PS2_CONFIG_P1INTEN;
    config |= PS2_CONFIG_P1CLK;
 
-   ps2_send_cmd(PS2CMD_SETCONFIG);
-   ps2_write_data(config);
+   ps2_cmd(PS2CMD_SETCONFIG);
+   ps2_write_poll(config);
 
    /* Enable port 1 */
-   ps2_send_cmd(PS2CMD_ENABLEP1);
+   ps2_cmd(PS2CMD_ENABLEP1);
 
    /* Set interrupt handler */
    
@@ -126,10 +141,10 @@ void ps2_init() {
 int kb_init() {
    uint8_t response;
    int retries;
-   ps2_write_data(KBCMD_RESET);
+   ps2_write_poll(KBCMD_RESET);
 
    for (retries = 3; retries > 0; --retries) {
-      response = ps2_read_data();
+      response = ps2_read_poll();
       if (response == KBRSP_ACK) {
          break;
       }
@@ -146,7 +161,7 @@ int kb_init() {
       return -1;
    }
 
-   response = ps2_read_data();
+   response = ps2_read_poll();
    if (response != KBRSP_ST_PASS) {
       printk("Keyboard reset failed: %hx\n", response);
       return -1;
@@ -165,17 +180,19 @@ int get_key(KeyPacket *kp, int poll) {
    uint8_t extended = 0;
    uint8_t breakcode = 0;
    uint8_t complete = 0;
-   uint8_t sc;
+   int sc;
    uint8_t i = 0;
 
    memset(kp, 0, sizeof(KeyPacket));
 
    while (!complete) {
       if (poll) {
-         sc = ps2_read_data();
+         sc = ps2_read_poll();
       }
       else {
-         sc = inb(PS2_DATA_PORT);
+         if ((sc = ps2_read()) == -1) {
+            return 0;
+         }
       }
       kp->scancode[i++] = sc;
       if (sc == 0xF0) {
@@ -221,25 +238,16 @@ int get_key(KeyPacket *kp, int poll) {
 
 void irq_kb(int irq, int err, void *arg) {
    KeyPacket kp;
-   printk("[");
    if (get_key(&kp, 0)) {
       if (kp.ascii) {
-         printk("%c", kp.ascii);
-      }
-      else {
-         printk(".");
-      }
-      if (kp.pressed) {
-         printk(" down");
-      }
-      else {
-         printk(" up");
+         if (kp.pressed) {
+            printk("%c", kp.ascii);
+         }
       }
    }
    else {
-      printk("get_key failed");
+      //printk("get_key failed");
    }
-   printk("]\n");
    pic_eoi(PIC_PS2_LINE);
 }
 
