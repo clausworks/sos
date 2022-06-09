@@ -31,7 +31,7 @@ typedef struct {
 } __attribute__((packed)) Context;
 
 typedef struct Process {
-   uint64_t pid;
+   int pid;
    Context regs;
    uint8_t *stack;
    struct Process *next;
@@ -39,7 +39,7 @@ typedef struct Process {
 } Process;
 
 typedef void (*kproc_t)(void *);
-typedef Process *(*scheduler_t)(Process *);
+typedef Process *(*scheduler_t)(Process **);
 
 /* System calls */
 void yield(void);
@@ -49,9 +49,17 @@ void kexit(void);
 void proc_yield(void);
 void proc_kexit(int, int, void*);
 void proc_run(void);
-void proc_create_kthread(kproc_t entrypoint, void *arg);
+Process *proc_create_kthread(kproc_t entrypoint, void *arg);
 void proc_reschedule(void);
-void proc_init(void);
+void proc_init(scheduler_t);
+
+/* Testing */
+void _test_proc_basic(void *);
+void _test_proc_loop(void *);
+
+/* Schedulers */
+Process *round_robin(Process **);
+Process *run_til_complete(Process **);
 
 /* Saved contexts for common interrupt handler */
 extern Process *cur_proc, *next_proc;

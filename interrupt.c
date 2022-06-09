@@ -203,7 +203,8 @@ void handle_asm_irq(int irq, int err, Context *saved_context) {
    c_idt[irq].handler(irq, err, c_idt[irq].arg);
    
    if (cur_proc != NULL && next_proc != NULL && cur_proc != next_proc) {
-      memcpy(&cur_proc->regs, &next_proc->regs, sizeof(Context));
+      memcpy(saved_context, &next_proc->regs, sizeof(Context));
+      cur_proc = next_proc;
    }
 }
 
@@ -242,7 +243,5 @@ void register_syscall(int num, void *fn) {
 void syscall_handler(int irq, int err, void *arg) {
    int call_num = cur_proc->regs.r9;  /* r9 set by the system call stub */
    /* TODO: figure out how to pass args */
-   printk("about to jump\n");
    asm volatile ("call *%0" :: "dN"(syscall_table[call_num]) :);
-   printk("back here!\n");
 }
