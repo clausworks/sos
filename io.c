@@ -65,6 +65,24 @@ void vga_display_char(char c, uint16_t attr) {
    STI_COND;
 }
 
+/* For snakes */
+void vga_display_attr_char(int x, int y, char c, int fg, int bg) {
+   CLI_COND;
+   vga_cursor = VGA_W * y + x;
+   *vga_addr = c | (fg << 8) | (bg << 12);
+   STI_COND;
+}
+
+/* For snakes */
+int vga_row_count(void) {
+   return VGA_H;
+}
+
+/* For snakes */
+int vga_col_count(void) {
+   return VGA_W;
+}
+
 /* Clear the display.
  */
 void vga_clear() {

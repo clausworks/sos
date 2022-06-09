@@ -2,6 +2,7 @@
 #define INTERRUPTH
 
 #include <stdint-gcc.h>
+#include "proc.h"
 
 typedef void (*irq_handler_t)(int, int, void *);
 
@@ -58,30 +59,40 @@ typedef struct TSS {
    uint64_t rsp1;
    uint64_t rsp2;
    uint64_t reserved_1C;
-   uint64_t ist1;
-   uint64_t ist2;
-   uint64_t ist3;
-   uint64_t ist4;
-   uint64_t ist5;
-   uint64_t ist6;
-   uint64_t ist7;
+   uint64_t ist[7];
    uint64_t reserved_5C;
    uint16_t reserved_64;
    uint16_t iomap_base;
 } __attribute__((packed)) TSS;
 
+
 #define TSS_DESC_TYPE 9
-#define ALT_STACK_WORDS 1024
+#define ALT_STACK_WORDS 0x1000
 #define TSS_GDT_INDEX 2 
 
 #define IDT_NUM_ENTRIES 256
 #define IDT_TYPE_INTGATE 0xE
+#define IDT_TYPE_TRAPGATE 0xF
 
 /* Exception vectors */
 #define EXC_DE 0
 #define EXC_DF 8
 #define EXC_GP 13
 #define EXC_PF 14
+#define TRAP_SYSCALL 0x80
+#define TRAP_EXIT 0x81
+
+/* IST Entries */
+#define IST_NUM_STACKS 4
+#define IST_DF 1
+#define IST_GP 2
+#define IST_PF 3
+#define IST_EXIT 4
+
+/* System calls */
+#define NUM_SYSCALLS 16
+#define SYSCALL_YIELD 0
+/* Note: exit has its own interrupt number */
 
 /* Macros for osdev.org PIC remap function */
 #define ICW1_ICW4 0x01d
@@ -126,8 +137,12 @@ void irq_init(void);
 void pic_setmask(uint8_t irq);
 void pic_clrmask(uint8_t irq);
 void pic_eoi(uint8_t irq);
-void handle_asm_irq(int, int);
+void handle_asm_irq(int, int, Context *);
 int interrupts_enabled(void);
+
+void syscall_init();
+void register_syscall(int, void *);
+void syscall_handler(int, int, void *);
 
 void irq_set_handler(int irq, irq_handler_t handler, void *arg);
 

@@ -1,9 +1,11 @@
 #include "kernel.h"
 #include "memory.h"
+#include "memalloc.h"
 #include "interrupt.h"
 #include "isr.h"
 #include "io.h"
 #include "ps2.h"
+#include "proc.h"
 #include <stdint-gcc.h>
 
 IDTEntry global_idt[IDT_NUM_ENTRIES];
@@ -13,6 +15,10 @@ TSS tss;
 uint64_t alt_stack_df[ALT_STACK_WORDS] = {0};
 uint64_t alt_stack_gp[ALT_STACK_WORDS] = {0};
 uint64_t alt_stack_pf[ALT_STACK_WORDS] = {0};
+uint64_t alt_stack_exit[ALT_STACK_WORDS] = {0};
+
+void *syscall_table[NUM_SYSCALLS];
+
 
 /* osdev.org PIC remap: https://wiki.osdev.org/PIC */
 void remap_pic(int offset1, int offset2) {
@@ -65,9 +71,9 @@ void tss_init() {
 
    /* TSS */
    memset(&tss, 0, sizeof(TSS));
-   tss.ist1 = (uint64_t)(alt_stack_df + ALT_STACK_WORDS - 1);
-   tss.ist2 = (uint64_t)(alt_stack_gp + ALT_STACK_WORDS - 1);
-   tss.ist3 = (uint64_t)(alt_stack_pf + ALT_STACK_WORDS - 1);
+   tss.ist[IST_DF - 1] = (uint64_t)(alt_stack_df + ALT_STACK_WORDS - 1);
+   tss.ist[IST_GP - 1] = (uint64_t)(alt_stack_gp + ALT_STACK_WORDS - 1);
+   tss.ist[IST_PF - 1] = (uint64_t)(alt_stack_pf + ALT_STACK_WORDS - 1);
    tss.iomap_base = sizeof(TSS) - 2;
 
    /* Enable */
@@ -98,9 +104,9 @@ void irq_init() {
    }
 
    /* Set IST entries for special stacks */
-   global_idt[EXC_DF].ist = 1;
-   global_idt[EXC_GP].ist = 2;
-   global_idt[EXC_PF].ist = 3;
+   global_idt[EXC_DF].ist = IST_DF;
+   global_idt[EXC_GP].ist = IST_GP;
+   global_idt[EXC_PF].ist = IST_PF;
 
    /* Disable all PIC interrupts */
    for (i = 0; i < 16; ++i) {
@@ -180,9 +186,14 @@ void pic_clrmask(uint8_t irq) {
 
 /* C interrupt handlers */
 
-void handle_asm_irq(int irq, int err) {
+void handle_asm_irq(int irq, int err, Context *saved_context) {
+   if (cur_proc != NULL) {
+      memcpy(&cur_proc->regs, saved_context, sizeof(Context));
+   }
+
    if (irq < 0 || irq >= IDT_NUM_ENTRIES) {
       printk("handle_asm_irq: invalid IRQ number (#%d)\n", irq);
+      HLT;
    }
    if (c_idt[irq].handler == NULL) {
       printk("Unhandled interrupt: #%d. Halting CPU.\n", irq);
@@ -190,6 +201,11 @@ void handle_asm_irq(int irq, int err) {
    }
 
    c_idt[irq].handler(irq, err, c_idt[irq].arg);
+   
+   if (cur_proc != NULL && next_proc != NULL && cur_proc != next_proc) {
+      memcpy(saved_context, &next_proc->regs, sizeof(Context));
+      cur_proc = next_proc;
+   }
 }
 
 void irq_de(int irq, int err, void *arg) {
@@ -204,4 +220,28 @@ void irq_df(int irq, int err, void *arg) {
 void irq_gp(int irq, int err, void *arg) {
    printk("General protection fault (error 0x%x)\n", err);
    HLT;
+}
+
+/* System Calls */
+
+void syscall_init() {
+   /* Trap stack */
+   tss.ist[IST_EXIT - 1] = (uint64_t)(alt_stack_exit + ALT_STACK_WORDS - 1);
+   
+   /* IDT */
+   global_idt[TRAP_EXIT].ist = IST_EXIT;
+   global_idt[TRAP_EXIT].type = IDT_TYPE_TRAPGATE;
+
+   irq_set_handler(TRAP_SYSCALL, syscall_handler, NULL);
+   printk("syscall_init\n");
+}
+
+void register_syscall(int num, void *fn) {
+   syscall_table[num] = fn;
+}
+
+void syscall_handler(int irq, int err, void *arg) {
+   int call_num = cur_proc->regs.r9;  /* r9 set by the system call stub */
+   /* TODO: figure out how to pass args */
+   asm volatile ("call *%0" :: "dN"(syscall_table[call_num]) :);
 }

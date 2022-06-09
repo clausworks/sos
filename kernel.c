@@ -5,6 +5,8 @@
 #include "io.h"
 #include "memalloc.h"
 #include "kmalloc.h"
+#include "proc.h"
+#include "snakes.h"
 
 void init_msg() {
    vga_clear();
@@ -37,21 +39,16 @@ extern void kmain() {
    mmu_pf_alloc_init();
    mmu_pt_init();
    kmalloc_init();
+   syscall_init();
+   proc_init(round_robin);
 
-   /* Enable interrupts */
    STI;
 
-   /*
-   asm("int $0x21"::);
-   */
-
-
-   /*
-   _test_kmalloc_basic();
-   */
-   _test_kmalloc_multipage();
+   setup_snakes(1);
 
    while (1) {
+      proc_run();
+      printk("back in kmain\n");
       HLT;
    }
 }

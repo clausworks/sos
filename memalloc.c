@@ -392,7 +392,6 @@ void *mmu_alloc_stack() {
    
    /* bottom of stack: don't demand */
    addr = mmu_alloc_page(kstack_next, 0);
-   printk("  stack bottom %p\n", addr);
    kstack_next += FRAME_SIZE;
 
    /* middle pages: present */
@@ -400,13 +399,10 @@ void *mmu_alloc_stack() {
       addr = mmu_alloc_page(kstack_next, 1);
       kstack_next += FRAME_SIZE;
    }
-   printk("  stack top usable page %p\n", addr);
 
    /* top of stack: don't demand */
    addr = mmu_alloc_page(kstack_next, 0);
-   printk("  stack top page base %p\n", addr);
    addr -= 1; /* top of top present page */
-   printk("  stack top %p\n", addr);
    kstack_next += FRAME_SIZE;
 
    STI_COND;

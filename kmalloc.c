@@ -21,7 +21,6 @@ static void extend_pool(KMPool *pool) {
    int j;
 
    if (pool->head != NULL) {
-      printk("extend_pool: head pointer non-null\n");
       return;
    }
 
@@ -49,7 +48,6 @@ void kmalloc_init() {
 }
 
 void *kmalloc(uint64_t size) {
-   int _extended = 0;
    int i;
    int num_pages;
    KMHeader *hdr;
@@ -71,9 +69,6 @@ void *kmalloc(uint64_t size) {
       hdr->size = size;
       hdr->pool = NULL;
 
-      printk("kmalloc: %p: %d pages for %ld bytes of data\n",
-         hdr + 1, num_pages, size);
-
       km_stats.b_requested += size;
       km_stats.b_used += num_pages * FRAME_SIZE;
 
@@ -87,7 +82,6 @@ void *kmalloc(uint64_t size) {
    pools[i].avail -= 1;
    if (pools[i].head == NULL) {
       extend_pool(&pools[i]);
-      _extended = 1;
    }
 
    km_stats.b_requested += size;
@@ -95,11 +89,6 @@ void *kmalloc(uint64_t size) {
 
    hdr->pool = &pools[i];
    hdr->size = size;
-
-   printk("kmalloc: %p: %ld-byte block (actual %ld); data is %ldB\n",
-      hdr + 1, km_block_sizes[i], km_block_sizes[i] - sizeof(KMHeader), size);
-
-   if (_extended) printk("  kmalloc: pool extended\n");
 
    STI_COND;
    return hdr + 1; /* increment past header */
@@ -121,17 +110,12 @@ void kfree(void *addr) {
       if ((hdr->size + sizeof(KMHeader)) % FRAME_SIZE != 0) {
          num_pages++;
       }
-      printk("kfree: %p: %ld bytes from %d pages\n",
-         addr, hdr->size, num_pages);
       mmu_free_heap_pages(hdr, num_pages);
       STI_COND;
       return;
    }
 
    new_head = (KMFreeList *)byteptr;
-
-   printk("kfree: %p: %ld bytes from %ld-byte block pool\n",
-      addr, hdr->size, hdr->pool->max_size);
 
    km_stats.b_requested -= hdr->size;
    km_stats.b_used -= hdr->pool->max_size;
