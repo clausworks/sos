@@ -52,6 +52,7 @@ void proc_init(scheduler_t sched) {
 }
 
 void proc_kexit(int irq, int err, void *arg) {
+   CLI_COND;
    //printk("kexit: %d\n", cur_proc->pid);
    /* Reassign head if exiting process is the head */
    if (head_proc == cur_proc) {
@@ -73,6 +74,7 @@ void proc_kexit(int irq, int err, void *arg) {
 
    /* Set next_proc */
    proc_reschedule();
+   STI_COND;
 }
 
 void proc_run(void) {
@@ -88,6 +90,7 @@ Process *proc_create_kthread(kproc_t entrypoint, void *arg) {
    new_proc->pid = pid++;
    new_proc->stack = mmu_alloc_stack();
 
+   CLI_COND;
    if (head_proc == NULL) {
       head_proc = new_proc;
       new_proc->next = new_proc;
@@ -109,10 +112,12 @@ Process *proc_create_kthread(kproc_t entrypoint, void *arg) {
    new_proc->regs.rflags = 0;
    new_proc->regs.rflags |= (RFLAGS_IF | RFLAGS_ONE);
    //printk("create_kthread: %d\n", new_proc->pid);
+   STI_COND;
    return new_proc;
 }
 
 void proc_reschedule() {
+   CLI_COND;
    if (head_proc != NULL) {
       next_proc = scheduler(&head_proc);
       //printk("proc_reschedule: %d\n", next_proc->pid);
@@ -121,6 +126,7 @@ void proc_reschedule() {
       next_proc = &kmain_proc;
       //printk("proc_reschedule: kmain (%d)\n", next_proc->pid);
    }
+   STI_COND;
 }
 
 void _test_proc_basic(void *arg) {
