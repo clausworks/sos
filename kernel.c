@@ -44,11 +44,13 @@ extern void kmain() {
 
    STI;
 
-   setup_snakes(1);
+   //setup_snakes(1);
 
    while (1) {
+      /*
       proc_run();
       printk("back in kmain\n");
+      */
       HLT;
    }
 }

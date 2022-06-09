@@ -115,10 +115,10 @@ void ps2_init() {
    ps2_send_cmd(PS2CMD_ENABLEP1);
 
    /* Set interrupt handler */
-   /*
-   pic_clrmask(PIC_PS2_LINE);
+   
    irq_set_handler(INT_PS2, irq_kb, NULL);
-   */
+   pic_clrmask(PIC_PS2_LINE);
+   
 }
 
 /* Returns 0 on success, -1 on failure. 
@@ -160,7 +160,7 @@ int kb_init() {
 /* Parses a scancode and populates kp. Blocks until an entire scancode is read.
  * Returns 1 on success, 0 on failure. 
  */
-int get_key(KeyPacket *kp, int block) {
+int get_key(KeyPacket *kp, int poll) {
    static uint8_t caps = 0, shift = 0;
    uint8_t extended = 0;
    uint8_t breakcode = 0;
@@ -171,7 +171,7 @@ int get_key(KeyPacket *kp, int block) {
    memset(kp, 0, sizeof(KeyPacket));
 
    while (!complete) {
-      if (block) {
+      if (poll) {
          sc = ps2_read_data();
       }
       else {
@@ -222,7 +222,7 @@ int get_key(KeyPacket *kp, int block) {
 void irq_kb(int irq, int err, void *arg) {
    KeyPacket kp;
    printk("[");
-   if (get_key(&kp, 1)) {
+   if (get_key(&kp, 0)) {
       if (kp.ascii) {
          printk("%c", kp.ascii);
       }
