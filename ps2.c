@@ -3,9 +3,27 @@
 #include "ps2.h"
 #include "memory.h"
 #include "io.h"
+#include "proc.h"
 
-ScanMapping scmap[0xFF];
-ScanMapping scmap_ext[0xFF];
+static ScanMapping scmap[0xFF];
+//static ScanMapping scmap_ext[0xFF];
+static Process *kb_blocked_head = NULL;
+int keep_blocking = 1;
+
+void blocking_function(void *arg) {
+   int i;
+   CLI;
+   for (i = 0; i < 5; ++i) {
+      printk("\nbefore\n");
+      keep_blocking = 1;
+      while (keep_blocking) {
+         proc_block_on(&kb_blocked_head);
+         CLI;
+      }
+      printk("\nafter\n");
+   }
+   STI;
+}
 
 void ps2_cmd(uint8_t cmd) {
    uint8_t status = inb(PS2_STATUS_PORT);
@@ -245,9 +263,8 @@ void irq_kb(int irq, int err, void *arg) {
          }
       }
    }
-   else {
-      //printk("get_key failed");
-   }
+   keep_blocking = 0;
+   proc_unblock_head(&kb_blocked_head);
    pic_eoi(PIC_PS2_LINE);
 }
 

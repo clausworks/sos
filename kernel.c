@@ -21,10 +21,10 @@ void init_msg() {
 }
 
 extern void kmain() {
-   /*
-   int _cont = 0;
-   while (!_cont);
-   */
+   
+   //int _cont = 0;
+   //while (!_cont);
+   
    
    CLI;
    
@@ -44,13 +44,11 @@ extern void kmain() {
 
    STI;
 
-   //setup_snakes(1);
+   proc_create_kthread(blocking_function, NULL);
 
    while (1) {
-      /*
       proc_run();
       printk("back in kmain\n");
-      */
       HLT;
    }
 }

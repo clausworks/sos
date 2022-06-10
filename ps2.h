@@ -66,4 +66,6 @@ int kb_init(void);
 int get_key(KeyPacket *, int);
 void init_scmap();
 
+void blocking_function(void *);
+
 #endif

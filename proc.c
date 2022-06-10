@@ -10,8 +10,11 @@
 static scheduler_t scheduler;
 Process *next_proc = 0;
 Process *cur_proc = 0;
-Process *head_proc = NULL;
+Process *ready_head = NULL;
 Process kmain_proc = {0};
+
+/*****************************************************************************/
+/* COOPERATIVE SCHEDULING */
 
 /* Advance head process and return it */
 Process *round_robin(Process **head) {
@@ -24,6 +27,41 @@ Process *round_robin(Process **head) {
 Process *run_til_complete(Process **head) {
    //printk("run_til_complete: next = %d\n", (*head)->pid);
    return *head;
+}
+
+static Process *unlink_proc(Process **head, Process *proc) {
+   Process *ret = proc;
+   /* Update head pointer in-place if necessary */
+   if (*head == proc) {
+      *head = proc->next;
+   }
+   /* Remove item (not last item) */
+   if (proc->prev != proc) {
+      proc->next->prev = proc->prev;
+      proc->prev->next = proc->next;
+   }
+   /* Remove last item */
+   else {
+      *head = NULL;
+   }
+
+   return ret;
+}
+
+static void append_proc(Process **head, Process *proc) {
+   /* Empty list */
+   if (*head == NULL) {
+      *head = proc;
+      proc->next = proc;
+      proc->prev = proc;
+   }
+   /* Append to tail */
+   else {
+      proc->next = *head;
+      proc->prev = (*head)->prev;
+      (*head)->prev = proc;
+      proc->prev->next = proc;
+   }
 }
 
 /* Ensure thread exits cleanly (even if user doesn't */
@@ -54,18 +92,7 @@ void proc_kexit(int irq, int err, void *arg) {
    CLI_COND;
    //printk("kexit: %d\n", cur_proc->pid);
    /* Reassign head if exiting process is the head */
-   if (head_proc == cur_proc) {
-      head_proc = cur_proc->next;
-   }
-   /* Check if there's another process */
-   if (cur_proc->prev != cur_proc) {
-      cur_proc->next->prev = cur_proc->prev;
-      cur_proc->prev->next = cur_proc->next;
-   }
-   else {
-      /* Removing last process */
-      head_proc = NULL;
-   }
+   unlink_proc(&ready_head, cur_proc);
 
    /* Free cur_proc */
    mmu_free_stack(cur_proc->stack);
@@ -90,18 +117,6 @@ Process *proc_create_kthread(kproc_t entrypoint, void *arg) {
    new_proc->stack = mmu_alloc_stack();
 
    CLI_COND;
-   if (head_proc == NULL) {
-      head_proc = new_proc;
-      new_proc->next = new_proc;
-      new_proc->prev = new_proc;
-   }
-   else {
-      /* Add new process to tail */
-      new_proc->next = head_proc;
-      new_proc->prev = head_proc->prev;
-      head_proc->prev = new_proc;
-      new_proc->prev->next = new_proc;
-   }
    new_proc->regs.rip = (uint64_t)entrypoint_wrapper;
    new_proc->regs.cs = CODE_SEG_SELECTOR;
    new_proc->regs.rsp = (uint64_t)new_proc->stack;
@@ -111,14 +126,15 @@ Process *proc_create_kthread(kproc_t entrypoint, void *arg) {
    new_proc->regs.rflags = 0;
    new_proc->regs.rflags |= (RFLAGS_IF | RFLAGS_ONE);
    //printk("create_kthread: %d\n", new_proc->pid);
+   append_proc(&ready_head, new_proc);
    STI_COND;
    return new_proc;
 }
 
 void proc_reschedule() {
    CLI_COND;
-   if (head_proc != NULL) {
-      next_proc = scheduler(&head_proc);
+   if (ready_head != NULL) {
+      next_proc = scheduler(&ready_head);
       //printk("proc_reschedule: %d\n", next_proc->pid);
    }
    else {
@@ -127,6 +143,41 @@ void proc_reschedule() {
    }
    STI_COND;
 }
+
+/*****************************************************************************/
+/* BLOCKING */
+/* Not used
+void proc_init_queue(Process **queue_head) {
+}
+*/
+
+void proc_unblock_head(Process **queue) {
+   Process *to_unblock;
+   if (*queue != NULL) {
+      to_unblock = unlink_proc(queue, *queue);
+      append_proc(&ready_head, to_unblock);
+   }
+   proc_reschedule();
+}
+
+void proc_unblock_all(Process **queue) {
+   Process *to_unblock;
+   while (*queue != NULL) {
+      to_unblock = unlink_proc(queue, *queue);
+      append_proc(&ready_head, to_unblock);
+   }
+   proc_reschedule();
+}
+
+void proc_block_on(Process **queue) {
+   unlink_proc(&ready_head, cur_proc);
+   append_proc(queue, cur_proc);
+   STI;
+   yield();
+}
+
+/*****************************************************************************/
+/* TEST CASES */
 
 void _test_proc_basic(void *arg) {
    printk("It works!\n");

@@ -45,13 +45,18 @@ typedef Process *(*scheduler_t)(Process **);
 void yield(void);
 void kexit(void);
 
-/* Kernel functions */
+/* Cooperative multitasking */
 void proc_yield(void);
 void proc_kexit(int, int, void*);
 void proc_run(void);
-Process *proc_create_kthread(kproc_t entrypoint, void *arg);
+Process *proc_create_kthread(kproc_t, void *);
 void proc_reschedule(void);
 void proc_init(scheduler_t);
+
+/* Blocking */
+void proc_unblock_head(Process **);
+void proc_unblock_all(Process **);
+void proc_block_on(Process **);
 
 /* Testing */
 void _test_proc_basic(void *);
