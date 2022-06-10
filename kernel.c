@@ -44,7 +44,7 @@ extern void kmain() {
 
    STI;
 
-   proc_create_kthread(blocking_function, NULL);
+   proc_create_kthread(print_keyboard, NULL);
 
    while (1) {
       proc_run();

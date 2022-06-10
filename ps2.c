@@ -10,19 +10,54 @@ static ScanMapping scmap[0xFF];
 static Process *kb_blocked_head = NULL;
 int keep_blocking = 1;
 
-void blocking_function(void *arg) {
-   int i;
+struct {
+   char buff[KB_BUFF_SIZE];
+   int read;
+   int write;
+} kb_buff = {0};
+
+/* Writing increments write index to next open spot */
+static void kb_buff_write(char c) {
+   /* Only add if buffer has space */
+   if (kb_buff.write != (kb_buff.read + 1) % KB_BUFF_SIZE) {
+      kb_buff.buff[kb_buff.write] = c;
+      kb_buff.write = (kb_buff.write + 1) % KB_BUFF_SIZE;
+   }
+}
+
+/* Returns the character, or -1 if nothing is available */
+static int kb_buff_read() {
+   char c_ret;
+   if (kb_buff.read == kb_buff.write) {
+      return -1;
+   }
+   c_ret = kb_buff.buff[kb_buff.read];
+   kb_buff.read = (kb_buff.read + 1) % KB_BUFF_SIZE;
+   return c_ret;
+}
+
+void getc() {
+   int c;
    CLI;
-   for (i = 0; i < 5; ++i) {
-      printk("\nbefore\n");
-      keep_blocking = 1;
-      while (keep_blocking) {
-         proc_block_on(&kb_blocked_head);
-         CLI;
-      }
-      printk("\nafter\n");
+   printk("getc: about to block\n");
+   while (kb_buff.read == kb_buff.write) {
+      printk("   (in loop)\n");
+      proc_block_on(&kb_blocked_head);
+      CLI;
+   }
+   if ((c = kb_buff_read()) == -1) {
+      printk("getc: kb_buff_read failed\n");
+   }
+   else {
+      printk("getc: read from buffer: [%c]\n", (char)c);
    }
    STI;
+}
+
+void print_keyboard(void *arg) {
+   while (1) {
+      getc();
+   }
 }
 
 void ps2_cmd(uint8_t cmd) {
@@ -256,15 +291,17 @@ int get_key(KeyPacket *kp, int poll) {
 
 void irq_kb(int irq, int err, void *arg) {
    KeyPacket kp;
+   printk("in isr\n");
    if (get_key(&kp, 0)) {
       if (kp.ascii) {
          if (kp.pressed) {
-            printk("%c", kp.ascii);
+            //printk("%c", kp.ascii);
+            kb_buff_write(kp.ascii);
+            proc_unblock_head(&kb_blocked_head);
          }
       }
    }
-   keep_blocking = 0;
-   proc_unblock_head(&kb_blocked_head);
+   printk("out of isr\n");
    pic_eoi(PIC_PS2_LINE);
 }
 

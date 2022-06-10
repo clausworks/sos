@@ -47,6 +47,8 @@
 #define PIC_PS2_LINE 1
 #define INT_PS2 (INT_PIC1_BASE + PIC_PS2_LINE)
 
+#define KB_BUFF_SIZE 256
+
 typedef struct KeyPacket {
    char ascii;
    uint8_t shift;
@@ -66,6 +68,6 @@ int kb_init(void);
 int get_key(KeyPacket *, int);
 void init_scmap();
 
-void blocking_function(void *);
+void print_keyboard(void *);
 
 #endif
