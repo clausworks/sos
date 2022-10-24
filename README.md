@@ -2,6 +2,6 @@
 
 Cal Poly, San Luis Obispo
 
-Dr. John Bellardo, CSC 454
+Dr. John Bellardo, CSC 454 (Implementation of Operating Systems)
 
-OS Project
+A multithreaded operating system for x86-64 written in C.
